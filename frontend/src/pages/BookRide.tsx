@@ -94,14 +94,14 @@ export const BookRide: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-bg text-primary">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 bg-bg text-primary">
       
       {/* Title */}
-      <div className="border-b border-border pb-4">
+      <div className="border-b border-border pb-3">
         <span className="font-mono text-[11px] uppercase tracking-widest text-muted font-semibold block mb-1">
           [BOOKING ENGINE // DESPATCH REQUEST]
         </span>
-        <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary tracking-tight uppercase">
+        <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight uppercase">
           Reserve Your Corridor Ride
         </h1>
         <p className="font-sans text-xs sm:text-sm text-secondary mt-1">
@@ -109,11 +109,11 @@ export const BookRide: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* Form Column (7 cols) */}
         <div className="lg:col-span-7">
-          <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border p-6 sm:p-8 space-y-6 shadow-elevated">
+          <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border p-5 sm:p-6 space-y-5 shadow-elevated">
             
             {/* Journey Scope */}
             <div>

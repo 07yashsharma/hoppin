@@ -79,7 +79,7 @@ export const AdminDashboard: React.FC = () => {
   const { analytics, recentIncidents, recentRides, recentMatches } = data || {};
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 bg-bg text-primary page-transition">
       
       {/* Title & Tabs */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-6">

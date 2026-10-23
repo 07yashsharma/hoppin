@@ -13,17 +13,17 @@ export const Safety: React.FC = () => {
   const [sosModalOpen, setSosModalOpen] = useState(false);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 bg-bg text-primary page-transition">
       
       {/* Hero Header */}
-      <div className="border-b border-border pb-8 space-y-4">
+      <div className="border-b border-border pb-5 space-y-3">
         <div className="flex items-center gap-2 font-mono text-xs text-muted uppercase">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
           <span>// PROTOCOL: TRUST & VERIFICATION</span>
           <span>•</span>
           <span className="text-accent bg-card px-2 py-0.5 rounded border border-border font-semibold">ZERO COMPROMISE</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl font-display font-bold text-primary tracking-tight max-w-3xl">
+        <h1 className="text-3xl sm:text-4xl font-display font-bold text-primary tracking-tight max-w-3xl">
           Safety Engineered into Every Kilometer.
         </h1>
         <p className="text-xs sm:text-sm text-secondary font-sans leading-relaxed max-w-2xl">
@@ -31,10 +31,10 @@ export const Safety: React.FC = () => {
         </p>
 
         {/* Test Emergency SOS modal launcher */}
-        <div className="pt-2">
+        <div className="pt-1">
           <button
             onClick={() => setSosModalOpen(true)}
-            className="px-6 py-3 rounded-xl bg-error hover:bg-error/90 text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-subtle"
+            className="px-5 py-2.5 rounded-xl bg-error hover:bg-error/90 text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all inline-flex items-center gap-2 shadow-subtle"
           >
             <ShieldAlert className="w-4 h-4" />
             <span>Launch Simulated Emergency SOS Test</span>

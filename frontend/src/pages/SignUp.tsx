@@ -53,24 +53,24 @@ export const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-bg text-primary page-transition">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-bg text-primary page-transition">
+      <div className="w-full max-w-md space-y-4">
         
         {/* Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-card border border-border shadow-subtle mb-1">
-            <img src="/logo.svg" alt="hopin" className="w-6 h-6" />
+        <div className="text-center space-y-1">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-card border border-border shadow-subtle mb-1">
+            <img src="/logo.svg" alt="hopin" className="w-5 h-5" />
           </div>
-          <h1 className="text-2xl font-display font-semibold tracking-tight text-primary">
+          <h1 className="text-xl sm:text-2xl font-display font-semibold tracking-tight text-primary">
             Create an account
           </h1>
-          <p className="text-sm text-secondary">
+          <p className="text-xs sm:text-sm text-secondary">
             Join verified commuters across Jaipur, Delhi, and Rajasthan
           </p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-card border border-border rounded-xl p-6 sm:p-7 shadow-elevated space-y-5">
+        <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-elevated space-y-4">
           
           {error && (
             <div className="p-3 rounded-lg bg-error-surface border border-error/30 text-error text-xs flex items-start gap-2.5">
@@ -79,9 +79,9 @@ export const SignUp: React.FC = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="block text-xs font-medium text-secondary">Full name</label>
               <input
                 type="text"
@@ -90,11 +90,11 @@ export const SignUp: React.FC = () => {
                 disabled={loading}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Ankit Verma"
-                className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 text-xs"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="block text-xs font-medium text-secondary">Email address</label>
               <input
                 type="email"
@@ -103,11 +103,11 @@ export const SignUp: React.FC = () => {
                 disabled={loading}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@company.com"
-                className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 text-xs"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="block text-xs font-medium text-secondary">Mobile phone</label>
               <input
                 type="tel"
@@ -115,11 +115,11 @@ export const SignUp: React.FC = () => {
                 disabled={loading}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98000 00000"
-                className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 text-xs"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="block text-xs font-medium text-secondary">Password</label>
               <input
                 type="password"
@@ -128,7 +128,7 @@ export const SignUp: React.FC = () => {
                 disabled={loading}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
-                className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 text-xs"
               />
             </div>
 

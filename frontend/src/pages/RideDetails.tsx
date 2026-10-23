@@ -108,7 +108,7 @@ export const RideDetails: React.FC = () => {
   const isCancelled = ride.status === 'cancelled';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 font-mono bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 font-mono bg-bg text-primary page-transition">
       
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-4">

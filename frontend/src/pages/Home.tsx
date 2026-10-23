@@ -38,14 +38,14 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div className="space-y-16 pb-20 overflow-hidden bg-bg text-primary page-transition">
+    <div className="space-y-12 sm:space-y-14 pb-16 overflow-hidden bg-bg text-primary page-transition">
       
       {/* SECTION 1: EDITORIAL DARK HERO */}
-      <section className="pt-8 sm:pt-12 pb-10 border-b border-border relative">
+      <section className="pt-4 sm:pt-6 pb-8 border-b border-border relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Top Label Ticker */}
-          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted pb-4 border-b border-border mb-8 uppercase tracking-wider">
+          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted pb-3 border-b border-border mb-6 uppercase tracking-wider">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent animate-ping" />
               <span className="font-semibold text-primary">URBAN MOBILITY / 01</span>
@@ -58,32 +58,32 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             
             {/* Left Column: Headline, Booking Panel */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               
-              <div className="space-y-3 relative">
+              <div className="space-y-2.5 relative">
                 {/* Floating pill */}
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs font-semibold shadow-subtle">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>37% CHEAPER THAN SOLO CABS</span>
                 </div>
 
-                <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-primary leading-[0.95] tracking-tight uppercase">
+                <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-primary leading-[0.98] tracking-tight uppercase">
                   GOOD ROUTES.<br />
                   <span className="text-accent">
                     BETTER COMPANY.
                   </span>
                 </h1>
 
-                <p className="font-sans text-base sm:text-lg text-secondary max-w-xl leading-relaxed pt-1">
+                <p className="font-sans text-sm sm:text-base text-secondary max-w-xl leading-relaxed pt-0.5">
                   City to city, street to street. Find verified people heading your way, share a premium cab, and make the journey cost significantly less.
                 </p>
               </div>
 
               {/* CLEAN FUNCTIONAL BOOKING INTERFACE */}
-              <div className="bg-card rounded-2xl border border-border shadow-elevated p-6 sm:p-7 space-y-5 relative">
+              <div className="bg-card rounded-2xl border border-border shadow-elevated p-5 sm:p-6 space-y-4 relative">
                 
                 {/* Journey Scope Switcher */}
                 <div className="flex items-center gap-2 font-mono text-xs">

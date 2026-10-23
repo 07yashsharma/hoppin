@@ -44,7 +44,7 @@ export const UserProfile: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-bg text-primary page-transition">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 bg-bg text-primary page-transition">
       
       {/* Page Header */}
       <div className="space-y-2 border-b border-border pb-4">

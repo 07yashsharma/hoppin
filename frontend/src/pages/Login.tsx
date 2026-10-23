@@ -140,24 +140,24 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-bg text-primary page-transition">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-[calc(100vh-120px)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-4 sm:py-6 bg-bg text-primary page-transition">
+      <div className="w-full max-w-md space-y-4">
         
         {/* Brand Header */}
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-card border border-border shadow-subtle mb-1">
-            <img src="/logo.svg" alt="hopin" className="w-6 h-6" />
+        <div className="text-center space-y-1">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-card border border-border shadow-subtle mb-1">
+            <img src="/logo.svg" alt="hopin" className="w-5 h-5" />
           </div>
-          <h1 className="text-2xl font-display font-semibold tracking-tight text-primary">
+          <h1 className="text-xl sm:text-2xl font-display font-semibold tracking-tight text-primary">
             Sign in to hopin
           </h1>
-          <p className="text-sm text-secondary">
+          <p className="text-xs sm:text-sm text-secondary">
             Highway cab pooling & verified shared routes across India
           </p>
         </div>
 
         {/* Primary Auth Card */}
-        <div className="bg-card border border-border rounded-xl p-6 sm:p-7 shadow-elevated space-y-5">
+        <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-elevated space-y-4">
           
           {/* Real ID Assurance Badge */}
           <div className="px-3.5 py-2 rounded-lg bg-secondary border border-border flex items-center gap-2 text-xs text-primary font-mono">
@@ -220,10 +220,10 @@ export const Login: React.FC = () => {
             </span>
           </div>
 
-          <form onSubmit={handleSignIn} className="space-y-4">
+          <form onSubmit={handleSignIn} className="space-y-3">
             
             {/* Email Field */}
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <label className="block text-xs font-medium text-secondary">
                 Email address / Real ID
               </label>
@@ -234,7 +234,7 @@ export const Login: React.FC = () => {
                   disabled={loading}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="e.g. yourname@gmail.com or work email"
-                  className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 font-mono text-xs"
+                  className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 font-mono text-xs"
                 />
               </div>
               <div className="flex items-center gap-1.5 text-[10px] text-muted font-mono">
@@ -244,7 +244,7 @@ export const Login: React.FC = () => {
             </div>
 
             {/* Optional Name (useful for new real IDs) */}
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <div className="flex items-center justify-between">
                 <label className="block text-xs font-medium text-secondary">
                   Your Full Name <span className="text-[10px] text-muted font-normal">(Optional)</span>
@@ -261,7 +261,7 @@ export const Login: React.FC = () => {
             </div>
 
             {/* Password Field */}
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <div className="flex items-center justify-between">
                 <label className="block text-xs font-medium text-secondary">
                   Password
@@ -282,12 +282,12 @@ export const Login: React.FC = () => {
                   disabled={loading}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password (or leave blank to auto-secure)"
-                  className="w-full pl-3 pr-10 py-2.5 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50"
+                  className="w-full pl-3 pr-10 py-2 rounded-lg bg-secondary border border-border text-sm text-primary placeholder:text-muted focus:border-accent transition-colors disabled:opacity-50 text-xs"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-3 text-muted hover:text-primary transition-colors"
+                  className="absolute right-3 top-2.5 text-muted hover:text-primary transition-colors"
                   aria-label={showPassword ? 'Hide password' : 'Show password'}
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -312,7 +312,7 @@ export const Login: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 rounded-lg bg-accent hover:bg-accent-hover text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-sm mt-2"
+              className="w-full py-2 px-4 rounded-lg bg-accent hover:bg-accent-hover text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-sm mt-1"
             >
               {loading ? (
                 <>
@@ -330,7 +330,7 @@ export const Login: React.FC = () => {
           </form>
 
           {/* Divider */}
-          <div className="relative py-2 flex items-center justify-center">
+          <div className="relative py-1.5 flex items-center justify-center">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-border" />
             </div>
@@ -347,12 +347,12 @@ export const Login: React.FC = () => {
                 type="button"
                 disabled={loading}
                 onClick={() => handleFastDemoSelect(account.id, account.email)}
-                className="p-2.5 rounded-lg bg-secondary hover:bg-elevated border border-border hover:border-accent/40 text-left transition-all flex items-center gap-2.5 group"
+                className="p-2 rounded-lg bg-secondary hover:bg-elevated border border-border hover:border-accent/40 text-left transition-all flex items-center gap-2 group"
               >
                 <img
                   src={account.avatar}
                   alt={account.name}
-                  className="w-7 h-7 rounded-md object-cover border border-border"
+                  className="w-6 h-6 rounded-md object-cover border border-border"
                 />
                 <div className="truncate flex-1">
                   <p className="font-medium text-primary truncate group-hover:text-accent transition-colors font-mono text-[11px]">
@@ -365,6 +365,7 @@ export const Login: React.FC = () => {
               </button>
             ))}
           </div>
+
 
           {/* Footer note inside card */}
           <div className="pt-2 border-t border-border text-center text-xs text-secondary">

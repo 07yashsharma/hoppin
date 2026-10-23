@@ -57,15 +57,15 @@ export const Matches: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 font-mono bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 font-mono bg-bg text-primary page-transition">
       
       {/* Title */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-3">
         <div>
           <span className="text-[11px] uppercase tracking-widest text-muted font-semibold block mb-1">
             [AI ROUTE MATCHING // CANDIDATE MATRIX]
           </span>
-          <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary tracking-tight uppercase">
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight uppercase">
             Active Route Matches
           </h1>
           <p className="font-sans text-xs sm:text-sm text-secondary mt-1">

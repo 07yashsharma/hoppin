@@ -32,16 +32,16 @@ export const SharedRides: React.FC = () => {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 font-mono bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 font-mono bg-bg text-primary page-transition">
       
       {/* Title */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-3">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent mb-1">
             <Sparkles className="w-3.5 h-3.5" />
             <span>[CORRIDOR CATALOG // SHARED POOLS]</span>
           </div>
-          <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary tracking-tight uppercase">
+          <h1 className="font-display font-bold text-2xl sm:text-3xl text-primary tracking-tight uppercase">
             Active Shared Corridors
           </h1>
           <p className="font-sans text-xs sm:text-sm text-secondary mt-1 max-w-2xl">
@@ -51,7 +51,7 @@ export const SharedRides: React.FC = () => {
 
         <Link
           to="/book"
-          className="px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2 self-start md:self-auto"
+          className="px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2 self-start md:self-auto"
         >
           <Car className="w-4 h-4" />
           <span>Post Your Route</span>

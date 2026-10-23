@@ -42,10 +42,10 @@ export const UserDashboard: React.FC = () => {
   const totalCo2Avoided = Math.round(rides.length * 14.8 + 44.5);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 bg-bg text-primary page-transition">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 bg-bg text-primary page-transition">
       
       {/* Welcome Header */}
-      <div className="bg-card text-primary rounded-2xl p-6 sm:p-8 border border-border shadow-elevated flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="bg-card text-primary rounded-2xl p-5 sm:p-6 border border-border shadow-elevated flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="relative">
             <img
