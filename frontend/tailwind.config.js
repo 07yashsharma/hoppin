@@ -9,16 +9,9 @@ export default {
       colors: {
         // Master Premium Dark Design System
         bg: '#101114',
-        secondary: '#15171B',
         card: '#1B1E24',
         elevated: '#21242B',
         primary: '#FFFFFF',
-        muted: '#969AA5',
-        accent: {
-          DEFAULT: '#8B8DFF',
-          hover: '#7A7CFA',
-          subtle: 'rgba(139, 141, 255, 0.12)'
-        },
         border: '#292C33',
         success: {
           DEFAULT: '#34D399',
@@ -27,6 +20,11 @@ export default {
         error: {
           DEFAULT: '#F87171',
           surface: '#2C1B20'
+        },
+        accent: {
+          DEFAULT: '#8B8DFF',
+          hover: '#7A7CFA',
+          subtle: 'rgba(139, 141, 255, 0.12)'
         },
         // Backward-compatibility aliases mapped strictly to the dark system
         hopin: {
@@ -39,13 +37,23 @@ export default {
           border: '#292C33',
           'border-dark': '#292C33',
           text: '#FFFFFF',
-          muted: '#969AA5',
+          muted: '#9CA3AF',
           accent: '#8B8DFF',
           lime: '#8B8DFF',
           blue: '#8B8DFF',
           pink: '#8B8DFF',
           orange: '#8B8DFF'
         }
+      },
+      textColor: {
+        primary: '#FFFFFF',
+        secondary: '#D1D5DB', // Clearly readable light gray (WCAG AA compliant)
+        muted: '#9CA3AF',     // Subtle yet fully legible
+        accent: '#8B8DFF',
+        white: '#FFFFFF',
+      },
+      backgroundColor: {
+        secondary: '#15171B', // Dark charcoal surface for containers/inputs
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],

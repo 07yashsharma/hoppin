@@ -9,7 +9,8 @@
     --bg-card: #1B1E24;
     --bg-elevated: #21242B;
     --text-primary: #FFFFFF;
-    --text-secondary: #9DA3B4;
+    --text-secondary: #D1D5DB;
+    --text-muted: #9CA3AF;
     --color-accent: #8B8DFF;
     --border-subtle: #292C33;
   }
@@ -29,15 +30,19 @@
     letter-spacing: -0.02em;
   }
 
-  /* Form control dark resets */
+  p {
+    color: #D1D5DB;
+  }
+
+  /* Form control dark resets - crisp readable text */
   input, select, textarea {
     background-color: #15171B;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border-color: #292C33;
   }
 
   input::placeholder, textarea::placeholder {
-    color: #969AA5;
+    color: #9CA3AF !important;
   }
 
   input:focus, select:focus, textarea:focus {
@@ -45,6 +50,19 @@
     border-color: #8B8DFF;
     box-shadow: 0 0 0 1px #8B8DFF;
   }
+}
+
+/* Ensure text-secondary and text-muted render with high contrast */
+.text-secondary {
+  color: #D1D5DB !important;
+}
+
+.text-muted {
+  color: #9CA3AF !important;
+}
+
+.text-primary {
+  color: #FFFFFF !important;
 }
 
 /* Ensure any element using text-bg renders crisp white text */
