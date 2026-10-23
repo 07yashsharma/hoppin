@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <rect width="120" height="120" rx="28" fill="#171916" />
+  
+  <!-- Continuous geometric route loop forming the letter 'h' -->
+  <!-- Left stem (Cobalt) -->
+  <path d="M 38 28 L 38 92" stroke="#345CFF" stroke-width="12" stroke-linecap="round" />
+  
+  <!-- Converging shared loop (Lime) -->
+  <path d="M 38 58 C 38 42, 60 42, 72 48 C 84 54, 84 74, 84 92" fill="none" stroke="#C5F55A" stroke-width="12" stroke-linecap="round" />
+  
+  <!-- Waypoint Origin Node (Orange) -->
+  <circle cx="38" cy="28" r="4.5" fill="#FF7948" />
+  
+  <!-- Destination Arrival Node (Lime) -->
+  <circle cx="84" cy="92" r="4.5" fill="#171916" stroke="#C5F55A" stroke-width="3" />
+</svg>

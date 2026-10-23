@@ -1,0 +1,11 @@
+{
+  "name": "routemate-ai",
+  "version": "1.0.0",
+  "description": "AI-Powered Smart Cab Booking & Ride-Sharing Platform",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "test": "cd backend && npm test",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev"
+  }
+}
