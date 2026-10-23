@@ -4,6 +4,7 @@ import {
   getDemoAccounts, 
   switchDemoUser as apiSwitchDemo, 
   loginUser as apiLoginUser,
+  loginGoogleUser as apiLoginGoogle,
   registerUser as apiRegisterUser,
   requestPasswordReset as apiRequestReset,
   resetUserPassword as apiResetPassword,
@@ -16,7 +17,8 @@ interface AuthContextType {
   loading: boolean;
   error: string | null;
   isAuthenticated: boolean;
-  loginWithEmail: (email: string, password?: string, rememberMe?: boolean) => Promise<void>;
+  loginWithEmail: (email: string, password?: string, rememberMe?: boolean, extra?: { name?: string; role?: string }) => Promise<void>;
+  loginWithGoogle: (email: string, name?: string, avatar?: string) => Promise<void>;
   loginWithDemo: (userId: string) => Promise<void>;
   register: (payload: { name: string; email: string; phone?: string; role?: string }) => Promise<void>;
   forgotPassword: (email: string) => Promise<{ message: string; resetToken?: string }>;
@@ -60,11 +62,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loadData();
   }, []);
 
-  const loginWithEmail = async (email: string, password?: string, rememberMe = true) => {
+  const loginWithEmail = async (email: string, password?: string, rememberMe = true, extra?: { name?: string; role?: string }) => {
     try {
       setLoading(true);
       setError(null);
-      const res = await apiLoginUser(email, password);
+      const res = await apiLoginUser(email, password, extra);
       setCurrentUser(res.user);
       localStorage.setItem('hopin_auth_token', 'active');
       if (rememberMe) {
@@ -72,6 +74,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       } else {
         localStorage.removeItem('hopin_remembered_email');
       }
+      setIsAuthenticated(true);
+    } catch (err: any) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loginWithGoogle = async (email: string, name?: string, avatar?: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await apiLoginGoogle({ email, name, avatar });
+      setCurrentUser(res.user);
+      localStorage.setItem('hopin_auth_token', 'active');
+      localStorage.setItem('hopin_remembered_email', email);
       setIsAuthenticated(true);
     } catch (err: any) {
       setError(err.message);
@@ -157,6 +176,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       error, 
       isAuthenticated,
       loginWithEmail,
+      loginWithGoogle,
       loginWithDemo,
       register,
       forgotPassword,

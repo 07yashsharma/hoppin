@@ -183,14 +183,25 @@ export async function switchDemoUser(userId: string): Promise<User> {
   return data.user;
 }
 
-export async function loginUser(email: string, password?: string): Promise<{ user: User; message: string }> {
+export async function loginUser(email: string, password?: string, extra?: { name?: string; role?: string; avatar?: string }): Promise<{ user: User; message: string }> {
   const res = await fetch(`${API_BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password, ...extra })
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || 'Authentication failed');
+  return data;
+}
+
+export async function loginGoogleUser(payload: { email: string; name?: string; avatar?: string }): Promise<{ user: User; message: string }> {
+  const res = await fetch(`${API_BASE}/auth/google`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Google authentication failed');
   return data;
 }
 

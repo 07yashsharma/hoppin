@@ -87,6 +87,14 @@ export const DemoBanner: React.FC = () => {
             <span>Admin (Ops)</span>
           </button>
 
+          {/* Active Real User Session */}
+          {currentUser && !['usr_rohan', 'usr_priya', 'drv_vikram', 'usr_admin'].includes(currentUser.id) && (
+            <span className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-accent text-bg font-semibold border border-accent flex items-center gap-1 shadow-subtle">
+              <span className="w-1.5 h-1.5 rounded-full bg-bg animate-ping" />
+              <span>{currentUser.name.split(' ')[0]} (Real ID: {currentUser.email})</span>
+            </span>
+          )}
+
           {/* Reset Demo button */}
           <button
             onClick={handleReset}

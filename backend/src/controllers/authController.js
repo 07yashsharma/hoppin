@@ -53,16 +53,112 @@ export function getAllDemoAccounts(req, res) {
 
 export function login(req, res) {
   try {
-    const { email } = req.body;
-    if (!email) {
-      return res.status(400).json({ success: false, message: "Email is required" });
+    const { email, name, role = "passenger", avatar, phone } = req.body;
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, message: "Email or real ID is required" });
     }
-    const user = db.getAllUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+    const cleanEmail = email.trim().toLowerCase();
+    let user = db.getAllUsers().find(u => u.email.toLowerCase() === cleanEmail);
+
     if (!user) {
-      return res.status(404).json({ success: false, message: "User not found with this email" });
+      // Auto-provision verified user account for ANY real email / ID on the fly
+      const derivedName = (name && name.trim())
+        ? name.trim()
+        : cleanEmail.split('@')[0]
+            .split(/[._-]+/)
+            .filter(Boolean)
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+            .join(' ') || "Verified Commuter";
+
+      const userAvatar = avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(derivedName)}&backgroundColor=8b8dff,345cff,c5f55a&textColor=101114`;
+
+      user = {
+        id: `usr_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+        name: derivedName,
+        email: cleanEmail,
+        phone: phone || "+91 98000 00000",
+        role: role,
+        avatar: userAvatar,
+        phoneVerified: true,
+        emailVerified: true,
+        idVerified: true,
+        bio: "Verified traveler on Hopin - Intelligent Cab Pooling & Route Sharing.",
+        preferredLanguage: "English, Hindi",
+        preferences: { quietRide: false, acPreferred: true, allowPet: false },
+        totalCompletedRides: 1,
+        averageRating: 5.0,
+        ratingBreakdown: { punctuality: 5.0, courtesy: 5.0, communication: 5.0, cleanliness: 5.0, overall: 5.0 },
+        reviewCount: 1,
+        topTags: ["Verified Identity", "Active Commuter"],
+        emergencyContacts: [
+          { id: `ec_${Date.now()}`, name: "Primary Guardian", phone: "+91 98765 43210", relationship: "Family" }
+        ]
+      };
+      db.users.push(user);
     }
+
     db.setCurrentUser(user.id);
-    return res.json({ success: true, message: `Logged in as ${user.name}`, user });
+    return res.json({
+      success: true,
+      message: `Logged in as ${user.name}`,
+      user
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+export function googleLogin(req, res) {
+  try {
+    const { email, name, avatar, googleId } = req.body;
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, message: "Google account email is required" });
+    }
+    const cleanEmail = email.trim().toLowerCase();
+    let user = db.getAllUsers().find(u => u.email.toLowerCase() === cleanEmail);
+
+    if (!user) {
+      const derivedName = (name && name.trim())
+        ? name.trim()
+        : cleanEmail.split('@')[0]
+            .split(/[._-]+/)
+            .filter(Boolean)
+            .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+            .join(' ') || "Google Commuter";
+
+      const userAvatar = avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(derivedName)}&backgroundColor=8b8dff,345cff,c5f55a&textColor=101114`;
+
+      user = {
+        id: `usr_g_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
+        name: derivedName,
+        email: cleanEmail,
+        phone: "+91 98000 00000",
+        role: "passenger",
+        avatar: userAvatar,
+        phoneVerified: true,
+        emailVerified: true,
+        idVerified: true,
+        bio: "Google-authenticated commuter across Indian highway corridors.",
+        preferredLanguage: "English, Hindi",
+        preferences: { quietRide: false, acPreferred: true, allowPet: false },
+        totalCompletedRides: 1,
+        averageRating: 5.0,
+        ratingBreakdown: { punctuality: 5.0, courtesy: 5.0, communication: 5.0, cleanliness: 5.0, overall: 5.0 },
+        reviewCount: 1,
+        topTags: ["Google Verified", "Prompt Traveler"],
+        emergencyContacts: [
+          { id: `ec_${Date.now()}`, name: "Family SOS", phone: "+91 98765 43210", relationship: "Family" }
+        ]
+      };
+      db.users.push(user);
+    }
+
+    db.setCurrentUser(user.id);
+    return res.json({
+      success: true,
+      message: `Signed in with Google as ${user.name}`,
+      user
+    });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -74,28 +170,34 @@ export function register(req, res) {
     if (!name || !email) {
       return res.status(400).json({ success: false, message: "Name and email are required" });
     }
-    const existing = db.getAllUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+    const cleanEmail = email.trim().toLowerCase();
+    let existing = db.getAllUsers().find(u => u.email.toLowerCase() === cleanEmail);
     if (existing) {
-      return res.status(409).json({ success: false, message: "Email is already registered" });
+      // Seamlessly sign in existing user instead of failing
+      existing.name = name.trim();
+      if (phone) existing.phone = phone;
+      if (role) existing.role = role;
+      db.setCurrentUser(existing.id);
+      return res.json({ success: true, message: "Logged into existing account", user: existing });
     }
     const newUser = {
       id: `usr_${Date.now()}`,
-      name,
-      email,
+      name: name.trim(),
+      email: cleanEmail,
       phone: phone || "+91 98000 00000",
       role,
-      avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80",
+      avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(name)}&backgroundColor=8b8dff,345cff,c5f55a&textColor=101114`,
       phoneVerified: true,
       emailVerified: true,
-      idVerified: false,
-      bio: "New RouteMate commuter traveling across India.",
+      idVerified: true,
+      bio: "New Hopin commuter traveling across India.",
       preferredLanguage: "English, Hindi",
       preferences: { quietRide: false, acPreferred: true, allowPet: false },
       totalCompletedRides: 0,
       averageRating: 5.0,
       ratingBreakdown: { punctuality: 5.0, courtesy: 5.0, communication: 5.0, cleanliness: 5.0, overall: 5.0 },
       reviewCount: 0,
-      topTags: ["New Member"],
+      topTags: ["New Member", "Verified Phone"],
       emergencyContacts: []
     };
     db.users.push(newUser);
