@@ -12,7 +12,7 @@ export default {
         secondary: '#15171B',
         card: '#1B1E24',
         elevated: '#21242B',
-        primary: '#E8E9ED',
+        primary: '#FFFFFF',
         muted: '#969AA5',
         accent: {
           DEFAULT: '#8B8DFF',
@@ -38,7 +38,7 @@ export default {
           elevated: '#21242B',
           border: '#292C33',
           'border-dark': '#292C33',
-          text: '#E8E9ED',
+          text: '#FFFFFF',
           muted: '#969AA5',
           accent: '#8B8DFF',
           lime: '#8B8DFF',

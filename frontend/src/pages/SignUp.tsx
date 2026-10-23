@@ -163,7 +163,7 @@ export const SignUp: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 rounded-lg bg-accent hover:bg-accent-hover text-bg font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-sm mt-3"
+              className="w-full py-2.5 px-4 rounded-lg bg-accent hover:bg-accent-hover text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 shadow-sm mt-3"
             >
               {loading ? (
                 <>

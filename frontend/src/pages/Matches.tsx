@@ -75,7 +75,7 @@ export const Matches: React.FC = () => {
 
         <Link
           to="/book"
-          className="px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-bg font-semibold text-xs uppercase tracking-wider flex items-center gap-2 self-start md:self-auto transition-colors shadow-subtle"
+          className="px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs uppercase tracking-wider flex items-center gap-2 self-start md:self-auto transition-colors shadow-subtle"
         >
           <Car className="w-4 h-4" />
           <span>New Corridor Request</span>
@@ -274,7 +274,7 @@ export const Matches: React.FC = () => {
                         </span>
                         <Link
                           to={`/ride/${match.rideAId}`}
-                          className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-subtle"
+                          className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-subtle"
                         >
                           <span>TRACK TRIP</span>
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -296,7 +296,7 @@ export const Matches: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleAccept(match.id)}
-                            className="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-1.5"
+                            className="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-1.5"
                           >
                             <CheckCircle2 className="w-4 h-4" />
                             <span>ACCEPT MATCH</span>

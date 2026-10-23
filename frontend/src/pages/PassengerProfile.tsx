@@ -57,7 +57,7 @@ export const PassengerProfile: React.FC = () => {
         <h2 className="text-xl font-display font-bold text-primary">COMMUTER RECORD NOT FOUND</h2>
         <Link 
           to="/dashboard" 
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-bg text-xs font-semibold uppercase tracking-wider"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-white text-xs font-semibold uppercase tracking-wider"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Return to Dashboard</span>

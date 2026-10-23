@@ -51,7 +51,7 @@ export const SharedRides: React.FC = () => {
 
         <Link
           to="/book"
-          className="px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-bg font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2 self-start md:self-auto"
+          className="px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2 self-start md:self-auto"
         >
           <Car className="w-4 h-4" />
           <span>Post Your Route</span>
@@ -83,7 +83,7 @@ export const SharedRides: React.FC = () => {
               onClick={() => setFilterType(type.id as any)}
               className={`px-3 py-1.5 rounded-xl uppercase tracking-wider font-semibold transition-all border ${
                 filterType === type.id 
-                  ? 'bg-accent text-bg border-accent shadow-subtle' 
+                  ? 'bg-accent text-white border-accent shadow-subtle' 
                   : 'bg-secondary text-secondary border-border hover:bg-elevated hover:text-primary'
               }`}
             >

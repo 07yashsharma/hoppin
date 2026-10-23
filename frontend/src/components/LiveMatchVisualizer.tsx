@@ -29,7 +29,7 @@ export const LiveMatchVisualizer: React.FC = () => {
             onClick={() => setActiveTab('combined')}
             className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
               activeTab === 'combined'
-                ? 'bg-accent text-bg shadow-subtle'
+                ? 'bg-accent text-white shadow-subtle'
                 : 'text-secondary hover:text-primary'
             }`}
           >
@@ -200,7 +200,7 @@ export const LiveMatchVisualizer: React.FC = () => {
 
               <Link
                 to="/matches"
-                className="px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-1.5 self-start sm:self-auto"
+                className="px-4 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-1.5 self-start sm:self-auto"
               >
                 <span>Test Live Matches</span>
                 <ArrowRight className="w-3.5 h-3.5" />

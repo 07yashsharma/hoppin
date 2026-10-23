@@ -189,7 +189,7 @@ export const Navbar: React.FC = () => {
             {/* Book A Ride Button */}
             <Link
               to="/book"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
             >
               <span>Book Ride</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

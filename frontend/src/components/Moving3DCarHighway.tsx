@@ -167,7 +167,7 @@ export const Moving3DCarHighway: React.FC = () => {
         >
           {/* Honk Soundwaves Indicator */}
           {honking && (
-            <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center gap-1 font-mono text-[10px] bg-accent text-bg px-2 py-0.5 rounded-full font-bold shadow-subtle animate-bounce">
+            <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex items-center gap-1 font-mono text-[10px] bg-accent text-white px-2 py-0.5 rounded-full font-bold shadow-subtle animate-bounce">
               <Volume2 className="w-3 h-3" />
               <span>BEEP BEEP!</span>
             </div>
@@ -199,10 +199,10 @@ export const Moving3DCarHighway: React.FC = () => {
             <div className="relative w-16 h-8 bg-elevated rounded-t-xl border border-border overflow-hidden shadow-inner flex items-center justify-center gap-2 px-2">
               <div className="absolute inset-0 bg-gradient-to-b from-sky-400/20 via-transparent to-black/60 pointer-events-none" />
               
-              <div className="w-4 h-4 rounded-full bg-accent/80 border border-white/40 text-[7px] font-bold text-bg flex items-center justify-center shadow-sm">
+              <div className="w-4 h-4 rounded-full bg-accent/80 border border-white/40 text-[7px] font-bold text-white flex items-center justify-center shadow-sm">
                 R
               </div>
-              <div className="w-4 h-4 rounded-full bg-sky-400/80 border border-white/40 text-[7px] font-bold text-bg flex items-center justify-center shadow-sm">
+              <div className="w-4 h-4 rounded-full bg-sky-400/80 border border-white/40 text-[7px] font-bold text-white flex items-center justify-center shadow-sm">
                 P
               </div>
             </div>
@@ -323,7 +323,7 @@ export const Moving3DCarHighway: React.FC = () => {
           <div className="flex items-center gap-2 pt-1">
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className={`px-4 py-1.5 rounded-lg text-[11px] font-semibold flex items-center gap-1.5 transition-colors ${isPlaying ? 'bg-error text-white hover:bg-error/90' : 'bg-success text-bg hover:bg-success/90'}`}
+              className={`px-4 py-1.5 rounded-lg text-[11px] font-semibold flex items-center gap-1.5 transition-colors ${isPlaying ? 'bg-error text-white hover:bg-error/90' : 'bg-success text-white hover:bg-success/90'}`}
             >
               {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
               <span>{isPlaying ? 'Pause' : 'Drive'}</span>

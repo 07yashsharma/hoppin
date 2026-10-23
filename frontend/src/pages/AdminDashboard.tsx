@@ -104,7 +104,7 @@ export const AdminDashboard: React.FC = () => {
             onClick={() => setActiveTab('kpis')}
             className={`px-4 py-2 rounded-xl font-semibold uppercase tracking-wider transition-all border ${
               activeTab === 'kpis'
-                ? 'bg-accent text-bg border-accent shadow-subtle'
+                ? 'bg-accent text-white border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -114,7 +114,7 @@ export const AdminDashboard: React.FC = () => {
             onClick={() => setActiveTab('incidents')}
             className={`px-4 py-2 rounded-xl font-semibold uppercase tracking-wider transition-all border ${
               activeTab === 'incidents'
-                ? 'bg-accent text-bg border-accent shadow-subtle'
+                ? 'bg-accent text-white border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -124,7 +124,7 @@ export const AdminDashboard: React.FC = () => {
             onClick={() => setActiveTab('config')}
             className={`px-4 py-2 rounded-xl font-semibold uppercase tracking-wider transition-all border ${
               activeTab === 'config'
-                ? 'bg-accent text-bg border-accent shadow-subtle'
+                ? 'bg-accent text-white border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -305,7 +305,7 @@ export const AdminDashboard: React.FC = () => {
                     <div className="pt-2 border-t border-border flex items-center justify-end gap-2">
                       <button
                         onClick={() => handleResolveIncident(inc.id)}
-                        className="px-4 py-2 rounded-xl bg-accent text-bg hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-colors shadow-subtle"
+                        className="px-4 py-2 rounded-xl bg-accent text-white hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-colors shadow-subtle"
                       >
                         Investigate & Mark Resolved
                       </button>
@@ -368,7 +368,7 @@ export const AdminDashboard: React.FC = () => {
             <div className="pt-4">
               <button
                 type="submit"
-                className="px-6 py-3 rounded-xl bg-accent text-bg hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
+                className="px-6 py-3 rounded-xl bg-accent text-white hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
               >
                 Save Economics Policy
               </button>

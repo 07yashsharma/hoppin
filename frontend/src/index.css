@@ -8,31 +8,31 @@
     --bg-secondary: #15171B;
     --bg-card: #1B1E24;
     --bg-elevated: #21242B;
-    --text-primary: #E8E9ED;
-    --text-secondary: #969AA5;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9DA3B4;
     --color-accent: #8B8DFF;
     --border-subtle: #292C33;
   }
 
   body {
     background-color: #101114;
-    color: #E8E9ED;
+    color: #FFFFFF;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     selection-background-color: #8B8DFF;
-    selection-color: #101114;
+    selection-color: #FFFFFF;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #E8E9ED;
+    color: #FFFFFF;
     letter-spacing: -0.02em;
   }
 
   /* Form control dark resets */
   input, select, textarea {
     background-color: #15171B;
-    color: #E8E9ED;
+    color: #FFFFFF;
     border-color: #292C33;
   }
 
@@ -45,6 +45,11 @@
     border-color: #8B8DFF;
     box-shadow: 0 0 0 1px #8B8DFF;
   }
+}
+
+/* Ensure any element using text-bg renders crisp white text */
+.text-bg {
+  color: #FFFFFF !important;
 }
 
 /* Page fade transition */

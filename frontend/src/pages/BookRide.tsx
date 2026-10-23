@@ -350,7 +350,7 @@ export const BookRide: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-4 rounded-xl bg-accent hover:bg-accent-hover text-white font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>PARSING CORRIDORS & SEARCHING CANDIDATES...</span>

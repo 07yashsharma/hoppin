@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
                     onClick={() => setJourneyType('interstate')}
                     className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-semibold transition-all border ${
                       journeyType === 'interstate' 
-                        ? 'bg-accent text-bg border-accent shadow-subtle' 
+                        ? 'bg-accent text-white border-accent shadow-subtle' 
                         : 'bg-secondary text-secondary border-border hover:text-primary hover:bg-elevated'
                     }`}
                   >
@@ -103,7 +103,7 @@ export const Home: React.FC = () => {
                     onClick={() => setJourneyType('outstation')}
                     className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-semibold transition-all border ${
                       journeyType === 'outstation' 
-                        ? 'bg-accent text-bg border-accent shadow-subtle' 
+                        ? 'bg-accent text-white border-accent shadow-subtle' 
                         : 'bg-secondary text-secondary border-border hover:text-primary hover:bg-elevated'
                     }`}
                   >
@@ -114,7 +114,7 @@ export const Home: React.FC = () => {
                     onClick={() => setJourneyType('city')}
                     className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-semibold transition-all border ${
                       journeyType === 'city' 
-                        ? 'bg-accent text-bg border-accent shadow-subtle' 
+                        ? 'bg-accent text-white border-accent shadow-subtle' 
                         : 'bg-secondary text-secondary border-border hover:text-primary hover:bg-elevated'
                     }`}
                   >
@@ -201,7 +201,7 @@ export const Home: React.FC = () => {
                     <div className="sm:col-span-5">
                       <button
                         type="submit"
-                        className="w-full py-3 px-5 rounded-xl bg-accent text-bg hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-2 active:scale-98"
+                        className="w-full py-3 px-5 rounded-xl bg-accent text-white hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-2 active:scale-98"
                       >
                         <span>FIND A RIDE</span>
                         <ArrowRight className="w-4 h-4" />
@@ -406,7 +406,7 @@ export const Home: React.FC = () => {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/book"
-              className="px-6 py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-bg font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2"
+              className="px-6 py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2"
             >
               <span>Book a Ride</span>
               <ArrowRight className="w-4 h-4" />

@@ -163,7 +163,7 @@ export const RideDetails: React.FC = () => {
                   <div
                     className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-semibold transition-all border ${
                       done
-                        ? 'bg-accent text-bg border-accent shadow-subtle'
+                        ? 'bg-accent text-white border-accent shadow-subtle'
                         : 'bg-card text-muted border-border'
                     }`}
                   >
@@ -195,7 +195,7 @@ export const RideDetails: React.FC = () => {
             <button
               onClick={handleAdvanceStatus}
               disabled={statusUpdating}
-              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider transition-all disabled:opacity-50 shadow-subtle"
+              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-display font-semibold text-xs uppercase tracking-wider transition-all disabled:opacity-50 shadow-subtle"
             >
               {statusUpdating ? 'SIMULATING...' : 'ADVANCE NEXT STEP →'}
             </button>
@@ -204,7 +204,7 @@ export const RideDetails: React.FC = () => {
           {isCompleted && (
             <Link
               to="/reviews"
-              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-subtle"
+              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-display font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-subtle"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>SUBMIT PEER REVIEW</span>

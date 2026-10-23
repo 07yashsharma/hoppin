@@ -212,7 +212,7 @@ export const Reviews: React.FC = () => {
                           onClick={() => toggleTag(tag)}
                           className={`px-3 py-1.5 rounded-xl border font-mono text-xs font-semibold transition-all ${
                             isSelected
-                              ? 'bg-accent text-bg border-accent shadow-subtle'
+                              ? 'bg-accent text-white border-accent shadow-subtle'
                               : 'bg-secondary text-secondary border-border hover:bg-elevated hover:text-primary'
                           }`}
                         >
@@ -248,7 +248,7 @@ export const Reviews: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-bg font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle disabled:opacity-50"
+                  className="w-full py-3.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle disabled:opacity-50"
                 >
                   {submitting ? 'RECORDING REPUTATION...' : 'SUBMIT VERIFIED RATING'}
                 </button>

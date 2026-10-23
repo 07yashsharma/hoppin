@@ -132,7 +132,7 @@ export const Interactive3DHeroObject: React.FC = () => {
               <div className="absolute bottom-0 left-2 text-[10px] font-mono text-primary bg-secondary px-2 py-0.5 rounded border border-border">
                 P2: AJMER RD
               </div>
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 text-[10px] font-mono text-bg font-bold bg-accent px-2 py-0.5 rounded shadow-subtle">
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 text-[10px] font-mono text-white font-bold bg-accent px-2 py-0.5 rounded shadow-subtle">
                 DELHI T3
               </div>
             </div>

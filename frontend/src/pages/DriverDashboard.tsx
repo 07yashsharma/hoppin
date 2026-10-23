@@ -94,7 +94,7 @@ export const DriverDashboard: React.FC = () => {
             onClick={() => setIsOnline(!isOnline)}
             className={`px-5 py-2.5 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider transition-all border flex items-center gap-2 shadow-subtle ${
               isOnline
-                ? 'bg-accent text-bg border-accent hover:bg-accent-hover'
+                ? 'bg-accent text-white border-accent hover:bg-accent-hover'
                 : 'bg-secondary text-muted border-border hover:text-primary'
             }`}
           >
@@ -251,7 +251,7 @@ export const DriverDashboard: React.FC = () => {
                     {ride.status === 'driver_assigned' && (
                       <button
                         onClick={() => handleStatusUpdate(ride.id, 'arriving')}
-                        className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
+                        className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
                       >
                         Arrived at Pickup Spot
                       </button>
@@ -260,7 +260,7 @@ export const DriverDashboard: React.FC = () => {
                     {ride.status === 'arriving' && (
                       <button
                         onClick={() => handleStatusUpdate(ride.id, 'in_progress')}
-                        className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
+                        className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
                       >
                         Start Trip (Verify OTP)
                       </button>
@@ -269,7 +269,7 @@ export const DriverDashboard: React.FC = () => {
                     {ride.status === 'in_progress' && (
                       <button
                         onClick={() => handleStatusUpdate(ride.id, 'completed')}
-                        className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-bg font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
+                        className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
                       >
                         Complete Trip & Credit Wallet
                       </button>

@@ -203,7 +203,7 @@ export const UserProfile: React.FC = () => {
             <button
               type="submit"
               disabled={addingContact}
-              className="px-5 py-2.5 rounded-xl bg-accent text-bg hover:bg-accent-hover text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-2 disabled:opacity-50 shadow-subtle"
+              className="px-5 py-2.5 rounded-xl bg-accent text-white hover:bg-accent-hover text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-2 disabled:opacity-50 shadow-subtle"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>{addingContact ? 'Registering...' : 'Save Emergency Contact'}</span>

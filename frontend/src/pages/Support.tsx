@@ -157,7 +157,7 @@ export const Support: React.FC = () => {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3.5 rounded-xl bg-accent text-bg hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-subtle"
+                className="w-full py-3.5 rounded-xl bg-accent text-white hover:bg-accent-hover font-mono font-semibold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-subtle"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{submitting ? 'TRANSMITTING...' : 'TRANSMIT REPORT TO DESK'}</span>

@@ -43,7 +43,7 @@ export const DemoBanner: React.FC = () => {
             onClick={() => switchUser('usr_rohan')}
             className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_rohan'
-                ? 'bg-accent text-bg font-semibold border-accent shadow-subtle'
+                ? 'bg-accent text-white font-semibold border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -55,7 +55,7 @@ export const DemoBanner: React.FC = () => {
             onClick={() => switchUser('usr_priya')}
             className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_priya'
-                ? 'bg-accent text-bg font-semibold border-accent shadow-subtle'
+                ? 'bg-accent text-white font-semibold border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -67,7 +67,7 @@ export const DemoBanner: React.FC = () => {
             onClick={() => switchUser('drv_vikram')}
             className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'drv_vikram'
-                ? 'bg-accent text-bg font-semibold border-accent shadow-subtle'
+                ? 'bg-accent text-white font-semibold border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -79,7 +79,7 @@ export const DemoBanner: React.FC = () => {
             onClick={() => switchUser('usr_admin')}
             className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_admin'
-                ? 'bg-accent text-bg font-semibold border-accent shadow-subtle'
+                ? 'bg-accent text-white font-semibold border-accent shadow-subtle'
                 : 'bg-card text-secondary border-border hover:bg-elevated hover:text-primary'
             }`}
           >
@@ -89,7 +89,7 @@ export const DemoBanner: React.FC = () => {
 
           {/* Active Real User Session */}
           {currentUser && !['usr_rohan', 'usr_priya', 'drv_vikram', 'usr_admin'].includes(currentUser.id) && (
-            <span className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-accent text-bg font-semibold border border-accent flex items-center gap-1 shadow-subtle">
+            <span className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-accent text-white font-semibold border border-accent flex items-center gap-1 shadow-subtle">
               <span className="w-1.5 h-1.5 rounded-full bg-bg animate-ping" />
               <span>{currentUser.name.split(' ')[0]} (Real ID: {currentUser.email})</span>
             </span>

@@ -105,7 +105,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
           
           {/* Pickup 1 */}
           <div className="flex flex-col items-center text-center">
-            <div className="w-8 h-8 rounded-xl bg-accent text-bg flex items-center justify-center font-bold text-xs shadow-subtle">
+            <div className="w-8 h-8 rounded-xl bg-accent text-white flex items-center justify-center font-bold text-xs shadow-subtle">
               <MapPin className="w-4 h-4" />
             </div>
             <span className="mt-1 text-[10px] font-semibold text-primary max-w-[95px] truncate">
@@ -123,7 +123,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
           {/* Pickup 2 */}
           {displayWaypoints.length > 2 && (
             <div className="flex flex-col items-center text-center">
-              <div className="w-8 h-8 rounded-xl bg-sky-500 text-bg flex items-center justify-center font-bold text-xs shadow-subtle">
+              <div className="w-8 h-8 rounded-xl bg-sky-500 text-white flex items-center justify-center font-bold text-xs shadow-subtle">
                 <MapPin className="w-4 h-4" />
               </div>
               <span className="mt-1 text-[10px] font-semibold text-primary max-w-[105px] truncate">
@@ -135,7 +135,7 @@ export const RouteMap: React.FC<RouteMapProps> = ({
 
           <div className="flex-1 mx-2 h-0.5 bg-gradient-to-r from-sky-400 to-accent relative">
             {currentLocation && (
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-bg font-bold px-1.5 py-0.5 rounded text-[9px] shadow-subtle animate-pulse">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-white font-bold px-1.5 py-0.5 rounded text-[9px] shadow-subtle animate-pulse">
                 EN ROUTE
               </div>
             )}

@@ -81,7 +81,7 @@ export const UserDashboard: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link
             to="/book"
-            className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-bg text-xs font-mono font-semibold uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2"
+            className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-mono font-semibold uppercase tracking-wider transition-all shadow-subtle flex items-center gap-2"
           >
             <Car className="w-4 h-4" />
             <span>Book New Ride</span>
@@ -156,7 +156,7 @@ export const UserDashboard: React.FC = () => {
             </div>
             <Link
               to={`/ride/${activeRide.id}`}
-              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-subtle"
+              className="px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white text-xs font-mono font-semibold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-subtle"
             >
               <span>Live Telemetry & Tracking</span>
               <ArrowRight className="w-4 h-4" />
@@ -213,7 +213,7 @@ export const UserDashboard: React.FC = () => {
 
                 <Link
                   to="/matches"
-                  className="px-4 py-2 rounded-xl bg-accent text-bg font-mono font-semibold text-xs uppercase tracking-wider hover:bg-accent-hover transition-colors self-start sm:self-auto shadow-subtle"
+                  className="px-4 py-2 rounded-xl bg-accent text-white font-mono font-semibold text-xs uppercase tracking-wider hover:bg-accent-hover transition-colors self-start sm:self-auto shadow-subtle"
                 >
                   Review & Accept
                 </Link>
