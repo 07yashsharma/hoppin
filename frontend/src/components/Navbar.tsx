@@ -31,20 +31,20 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-4">
+        <div className="flex items-center justify-between h-16 gap-3 lg:gap-4">
           
           {/* ========================================================= */}
-          {/* LEFT SECTION — BRAND / LOGO                              */}
+          {/* LEFT SECTION — BRAND / LOGO (SEPARATE & PROMINENT)        */}
           {/* ========================================================= */}
-          <div className="flex items-center shrink-0">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-xl bg-card p-1.5 border border-border group-hover:border-accent/60 transition-colors flex items-center justify-center shadow-subtle">
+          <div className="flex items-center shrink-0 pr-4 lg:pr-6 border-r border-border/50">
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-card p-1.5 border border-border group-hover:border-accent/60 transition-colors flex items-center justify-center shadow-subtle">
                 <img src="/logo.svg" alt="hopin" className="w-full h-full" />
               </div>
               <div className="flex items-baseline gap-1.5">
-                <span className="font-display text-xl font-bold tracking-tight text-primary">hopin</span>
+                <span className="font-display text-lg sm:text-xl font-bold tracking-tight text-primary">hopin</span>
                 <span className="w-2 h-2 rounded-full bg-accent inline-block animate-pulse" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-muted font-medium ml-1 hidden sm:inline">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-muted font-medium ml-1 hidden sm:inline">
                   HIGHWAY
                 </span>
               </div>
@@ -52,45 +52,45 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* ========================================================= */}
-          {/* CENTER SECTION — ALL WEBSITE FEATURES (EVENLY SPACED)     */}
+          {/* CENTER SECTION — COMPACT, SLIM FEATURE NAVIGATION         */}
           {/* ========================================================= */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 max-w-2xl mx-auto gap-1 xl:gap-2 font-mono text-xs">
+          <nav className="hidden lg:flex items-center justify-center gap-0.5 xl:gap-1 font-mono text-[11px] bg-card/60 p-1 rounded-xl border border-border/50 shadow-subtle">
             <Link
               to="/"
-              className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
                 isActive('/') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               // 01 HOME
             </Link>
             <Link
               to="/book"
-              className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
                 isActive('/book') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               // 02 BOOK
             </Link>
             <Link
               to="/shared-rides"
-              className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
                 isActive('/shared-rides') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               // 03 CORRIDORS
             </Link>
             <Link
               to="/matches"
-              className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                 isActive('/matches') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-accent" />
@@ -98,20 +98,20 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/safety"
-              className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
                 isActive('/safety') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               // 05 SAFETY
             </Link>
             <Link
               to="/dashboard"
-              className={`px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
+              className={`px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap ${
                 isActive('/dashboard') 
                   ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
-                  : 'text-secondary hover:text-primary hover:bg-card'
+                  : 'text-secondary hover:text-primary hover:bg-secondary'
               }`}
             >
               // 06 DESK
@@ -122,13 +122,13 @@ export const Navbar: React.FC = () => {
           {/* RIGHT SECTION — ACCOUNT AND PRIMARY ACTIONS              */}
           {/* Order: 1. User Dropdown | 2. Book Ride Button | 3. SignOut */}
           {/* ========================================================= */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className="hidden lg:flex items-center gap-2.5 xl:gap-3 shrink-0 pl-2 xl:pl-4">
             
             {/* 1. Existing User Profile Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setDemoDropdownOpen(!demoDropdownOpen)}
-                className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl border border-border bg-card hover:bg-elevated transition-colors text-left shadow-subtle"
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl border border-border bg-card hover:bg-elevated transition-colors text-left shadow-subtle"
               >
                 <div className="relative">
                   <img
@@ -198,7 +198,7 @@ export const Navbar: React.FC = () => {
             {/* 2. Existing Purple BOOK RIDE Primary Action Button */}
             <Link
               to="/book"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle shrink-0"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle shrink-0"
             >
               <span>Book Ride</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
             {/* 3. Existing Sign-in/Sign-out Icon Button */}
             <button
               onClick={handleLogout}
-              className="p-2 rounded-xl border border-border bg-card hover:bg-elevated text-muted hover:text-error transition-colors shadow-subtle shrink-0"
+              className="p-1.5 rounded-xl border border-border bg-card hover:bg-elevated text-muted hover:text-error transition-colors shadow-subtle shrink-0"
               title="Sign Out"
             >
               <LogOut className="w-4 h-4" />
