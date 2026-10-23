@@ -30,7 +30,7 @@ const AppContent: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-hopin-bg flex items-center justify-center font-mono text-xs text-hopin-muted">
+      <div className="min-h-screen bg-bg flex items-center justify-center font-mono text-xs text-muted">
         // INITIALIZING HOPIN HIGHWAY PLATFORM...
       </div>
     );
@@ -39,7 +39,7 @@ const AppContent: React.FC = () => {
   // 1. If not authenticated, always show the Start / Login Portal first!
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex flex-col bg-hopin-bg text-hopin-dark font-sans page-transition">
+      <div className="min-h-screen flex flex-col bg-bg text-primary font-sans page-transition">
         {/* Banner with 1-click persona fast-switch */}
         <DemoBanner />
         
@@ -57,7 +57,7 @@ const AppContent: React.FC = () => {
 
   // 2. Once authenticated, unlock full platform & navigation:
   return (
-    <div className="min-h-screen flex flex-col bg-hopin-bg text-hopin-dark font-sans page-transition">
+    <div className="min-h-screen flex flex-col bg-bg text-primary font-sans page-transition">
       {/* Top Interactive Demo Persona & Reset Bar */}
       <DemoBanner />
 

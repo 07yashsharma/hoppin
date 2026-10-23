@@ -7,11 +7,11 @@ import {
   Car, 
   Menu, 
   X, 
-  ArrowUpRight,
-  ShieldCheck,
-  User,
-  LogOut,
-  Sliders
+  ArrowUpRight, 
+  ShieldCheck, 
+  User, 
+  LogOut, 
+  Sliders 
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -29,83 +29,83 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b-2 border-hopin-dark">
+    <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="flex items-center justify-between h-16">
           
           {/* Brand Wordmark & Emblem */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-hopin-dark p-1.5 shadow-[3px_3px_0px_0px_#FF4D8D] group-hover:scale-105 transition-transform flex items-center justify-center border-2 border-hopin-dark">
+            <div className="w-9 h-9 rounded-xl bg-card p-1.5 border border-border group-hover:border-accent/60 transition-colors flex items-center justify-center shadow-subtle">
               <img src="/logo.svg" alt="hopin" className="w-full h-full" />
             </div>
             <div className="flex items-baseline gap-1.5">
-              <span className="font-display text-2xl font-black tracking-tighter text-hopin-dark">hopin</span>
-              <span className="w-2.5 h-2.5 rounded-full bg-hopin-pink inline-block animate-pulse" />
-              <span className="font-mono text-[9px] uppercase tracking-widest text-hopin-muted font-bold ml-1 hidden sm:inline">
-                [V2.4 // HIGHWAY]
+              <span className="font-display text-xl font-bold tracking-tight text-primary">hopin</span>
+              <span className="w-2 h-2 rounded-full bg-accent inline-block animate-pulse" />
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted font-medium ml-1 hidden sm:inline">
+                HIGHWAY
               </span>
             </div>
           </Link>
 
-          {/* Eye-Pleasing Nav Items with Pink/Blue/Orange Indicators */}
-          <nav className="hidden md:flex items-center gap-1.5 font-mono text-xs">
+          {/* Navigation Items */}
+          <nav className="hidden md:flex items-center gap-1 font-mono text-xs">
             <Link
               to="/"
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive('/') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#FF4D8D]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
               // 01 HOME
             </Link>
             <Link
               to="/book"
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive('/book') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#3259FE]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
               // 02 BOOK
             </Link>
             <Link
               to="/shared-rides"
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive('/shared-rides') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#FF6B35]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
               // 03 CORRIDORS
             </Link>
             <Link
               to="/matches"
-              className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1.5 ${
                 isActive('/matches') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#00E599]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-hopin-lime" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
               // 04 AI MATCHES
             </Link>
             <Link
               to="/safety"
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive('/safety') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#FF4D8D]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
               // 05 SAFETY
             </Link>
             <Link
               to="/dashboard"
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3 py-1.5 rounded-lg transition-colors ${
                 isActive('/dashboard') 
-                  ? 'bg-hopin-dark text-white border-hopin-dark font-bold shadow-[2px_2px_0px_0px_#3259FE]' 
-                  : 'border-transparent text-hopin-dark hover:bg-black/5'
+                  ? 'bg-elevated text-primary font-semibold border border-border shadow-subtle' 
+                  : 'text-secondary hover:text-primary hover:bg-card'
               }`}
             >
               // 06 DESK
@@ -119,31 +119,31 @@ export const Navbar: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setDemoDropdownOpen(!demoDropdownOpen)}
-                className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl border-2 border-hopin-dark bg-white hover:bg-hopin-bg transition-all text-left shadow-[2px_2px_0px_0px_#121624]"
+                className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl border border-border bg-card hover:bg-elevated transition-colors text-left shadow-subtle"
               >
                 <div className="relative">
                   <img
                     src={currentUser?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100'}
                     alt={currentUser?.name || 'User'}
-                    className="w-6 h-6 rounded-md object-cover border border-hopin-dark"
+                    className="w-6 h-6 rounded-lg object-cover border border-border"
                   />
-                  <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-400 rounded-full" />
                 </div>
                 <div className="text-[11px] font-mono leading-none">
-                  <span className="font-bold text-hopin-dark block">{currentUser?.name?.split(' ')[0] || 'User'}</span>
-                  <span className="text-[9px] uppercase tracking-wider text-hopin-muted font-bold">
+                  <span className="font-semibold text-primary block">{currentUser?.name?.split(' ')[0] || 'User'}</span>
+                  <span className="text-[9px] uppercase tracking-wider text-muted font-medium">
                     {currentUser?.role === 'admin' ? 'SuperAdmin' : currentUser?.role === 'driver' ? 'Captain' : 'Traveler'}
                   </span>
                 </div>
-                <ChevronDown className="w-3.5 h-3.5 text-hopin-dark" />
+                <ChevronDown className="w-3.5 h-3.5 text-muted" />
               </button>
 
               {/* Demo Switcher Menu */}
               {demoDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-[6px_6px_0px_0px_#121624] border-2 border-hopin-dark py-2 z-50">
-                  <div className="px-4 py-2 border-b-2 border-hopin-dark font-mono text-[10px] text-hopin-muted uppercase tracking-wider flex items-center justify-between">
-                    <span>[SWITCH DEMO PERSONA]</span>
-                    <span className="text-hopin-pink font-bold">4 PROFILES</span>
+                <div className="absolute right-0 mt-2 w-72 bg-card rounded-xl shadow-elevated border border-border py-2 z-50">
+                  <div className="px-4 py-2 border-b border-border font-mono text-[10px] text-muted uppercase tracking-wider flex items-center justify-between">
+                    <span>SWITCH PERSONA</span>
+                    <span className="text-accent font-semibold">4 PROFILES</span>
                   </div>
 
                   <div className="py-1">
@@ -155,18 +155,18 @@ export const Navbar: React.FC = () => {
                           setDemoDropdownOpen(false);
                         }}
                         className={`w-full flex items-center gap-3 px-4 py-2 text-left text-xs transition-colors ${
-                          currentUser?.id === account.id ? 'bg-hopin-pink-light font-bold text-hopin-dark' : 'hover:bg-black/5 text-hopin-muted'
+                          currentUser?.id === account.id ? 'bg-elevated font-semibold text-primary border-l-2 border-accent' : 'hover:bg-secondary text-secondary'
                         }`}
                       >
-                        <img src={account.avatar} alt={account.name} className="w-7 h-7 rounded-md object-cover border border-hopin-dark" />
+                        <img src={account.avatar} alt={account.name} className="w-7 h-7 rounded-lg object-cover border border-border" />
                         <div className="flex-1 font-mono text-[11px]">
                           <div className="flex items-center justify-between">
-                            <span className="font-bold text-hopin-dark">{account.name}</span>
-                            <span className="text-[9px] uppercase font-bold px-1.5 py-0.5 rounded-sm bg-black/5">
+                            <span className="font-medium text-primary">{account.name}</span>
+                            <span className="text-[9px] uppercase font-semibold px-1.5 py-0.5 rounded bg-secondary text-muted">
                               {account.role}
                             </span>
                           </div>
-                          <span className="text-[10px] text-hopin-muted">
+                          <span className="text-[10px] text-muted">
                             {account.role === 'driver' ? 'Innova Crysta Captain' : account.role === 'admin' ? 'Platform Operations' : 'Verified Traveler'}
                           </span>
                         </div>
@@ -174,11 +174,11 @@ export const Navbar: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="px-4 pt-2 pb-1 border-t-2 border-hopin-dark flex items-center justify-between font-mono text-[10px]">
-                    <Link to="/driver/dashboard" onClick={() => setDemoDropdownOpen(false)} className="text-hopin-blue font-bold hover:underline">
+                  <div className="px-4 pt-2 pb-1 border-t border-border flex items-center justify-between font-mono text-[10px]">
+                    <Link to="/driver/dashboard" onClick={() => setDemoDropdownOpen(false)} className="text-accent hover:underline font-medium">
                       // DRIVER TERMINAL
                     </Link>
-                    <Link to="/admin" onClick={() => setDemoDropdownOpen(false)} className="text-hopin-orange font-bold hover:underline">
+                    <Link to="/admin" onClick={() => setDemoDropdownOpen(false)} className="text-muted hover:text-primary hover:underline font-medium">
                       // ADMIN DESK
                     </Link>
                   </div>
@@ -186,10 +186,10 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Book A Ride Button (Vibrant Pink / Orange / Lime Accent) */}
+            {/* Book A Ride Button */}
             <Link
               to="/book"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-hopin-pink hover:bg-pink-600 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_#121624] hover:scale-[1.02] border-2 border-hopin-dark"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent hover:bg-accent-hover text-bg font-mono font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle"
             >
               <span>Book Ride</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -198,7 +198,7 @@ export const Navbar: React.FC = () => {
             {/* Logout button */}
             <button
               onClick={handleLogout}
-              className="p-2 rounded-xl border-2 border-hopin-dark bg-white hover:bg-red-50 text-hopin-dark hover:text-red-600 transition-colors shadow-[2px_2px_0px_0px_#121624]"
+              className="p-2 rounded-xl border border-border bg-card hover:bg-elevated text-muted hover:text-error transition-colors shadow-subtle"
               title="Sign Out to Start Screen"
             >
               <LogOut className="w-4 h-4" />
@@ -209,14 +209,14 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={handleLogout}
-              className="p-1.5 rounded-lg border-2 border-hopin-dark text-hopin-dark"
+              className="p-1.5 rounded-lg border border-border text-muted hover:text-error bg-card"
               title="Logout"
             >
               <LogOut className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-hopin-dark border-2 border-hopin-dark bg-white"
+              className="p-2 rounded-lg text-primary border border-border bg-card hover:bg-elevated"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -227,66 +227,66 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b-2 border-hopin-dark bg-white px-4 pt-3 pb-5 space-y-2 font-mono text-xs shadow-lg">
+        <div className="md:hidden border-b border-border bg-card px-4 pt-3 pb-5 space-y-2 font-mono text-xs shadow-elevated">
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 01 HOME
           </Link>
           <Link
             to="/book"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 02 BOOK A RIDE
           </Link>
           <Link
             to="/shared-rides"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 03 HIGHWAY CORRIDORS
           </Link>
           <Link
             to="/matches"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 04 AI MATCHES
           </Link>
           <Link
             to="/safety"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 05 SAFETY & SOS
           </Link>
           <Link
             to="/dashboard"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-dark hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-primary hover:bg-elevated"
           >
             // 06 PASSENGER DASHBOARD
           </Link>
           <Link
             to="/driver/dashboard"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-blue hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-accent hover:bg-elevated"
           >
             // DRIVER TERMINAL
           </Link>
           <Link
             to="/admin"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md font-bold text-hopin-orange hover:bg-black/5"
+            className="block px-3 py-2 rounded-lg font-medium text-muted hover:text-primary hover:bg-elevated"
           >
             // OPERATIONS ADMIN
           </Link>
 
-          <div className="pt-3 border-t-2 border-hopin-dark">
-            <p className="text-[10px] uppercase font-mono text-hopin-muted mb-2">[SWITCH ACTIVE DEMO PERSONA]</p>
+          <div className="pt-3 border-t border-border">
+            <p className="text-[10px] uppercase font-mono text-muted mb-2">SWITCH ACTIVE DEMO PERSONA</p>
             <div className="grid grid-cols-2 gap-2">
               {demoAccounts.slice(0, 4).map(account => (
                 <button
@@ -295,12 +295,12 @@ export const Navbar: React.FC = () => {
                     switchUser(account.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`p-2 rounded-lg border-2 text-left text-[11px] font-mono ${
-                    currentUser?.id === account.id ? 'border-hopin-dark bg-hopin-pink-light font-bold' : 'border-hopin-dark/40'
+                  className={`p-2 rounded-lg border text-left text-[11px] font-mono ${
+                    currentUser?.id === account.id ? 'border-accent bg-elevated text-primary font-semibold' : 'border-border bg-secondary text-secondary'
                   }`}
                 >
-                  <p className="truncate font-bold text-hopin-dark">{account.name.split(' ')[0]}</p>
-                  <p className="text-[9px] text-hopin-muted uppercase">{account.role}</p>
+                  <p className="truncate font-semibold text-primary">{account.name.split(' ')[0]}</p>
+                  <p className="text-[9px] text-muted uppercase">{account.role}</p>
                 </button>
               ))}
             </div>

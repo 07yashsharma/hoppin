@@ -50,6 +50,8 @@ app.get("/api/auth/demo-accounts", authController.getAllDemoAccounts);
 app.post("/api/auth/switch-demo", authController.switchDemoAccount);
 app.post("/api/auth/login", authController.login);
 app.post("/api/auth/register", authController.register);
+app.post("/api/auth/forgot-password", authController.forgotPassword);
+app.post("/api/auth/reset-password", authController.resetPassword);
 
 // --- RIDES ---
 app.get("/api/rides", ridesController.getAllRides);

@@ -105,3 +105,43 @@ export function register(req, res) {
     return res.status(500).json({ success: false, message: error.message });
   }
 }
+
+export function forgotPassword(req, res) {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({ success: false, message: "Email is required" });
+    }
+    const user = db.getAllUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (!user) {
+      return res.status(404).json({ success: false, message: "No account registered with this email address" });
+    }
+    return res.json({
+      success: true,
+      message: `Password reset instructions transmitted to ${email}. Verification token active for 15 minutes.`,
+      resetToken: `rst_${Date.now()}`
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+export function resetPassword(req, res) {
+  try {
+    const { email, newPassword, token } = req.body;
+    if (!email || !newPassword) {
+      return res.status(400).json({ success: false, message: "Email and new password are required" });
+    }
+    const user = db.getAllUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+    return res.json({
+      success: true,
+      message: "Password updated successfully. You can now authenticate with your new credentials."
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
+

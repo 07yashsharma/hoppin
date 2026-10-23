@@ -1,5 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getCurrentUser, getDemoAccounts, switchDemoUser as apiSwitchDemo, User } from '../services/api';
+import { 
+  getCurrentUser, 
+  getDemoAccounts, 
+  switchDemoUser as apiSwitchDemo, 
+  loginUser as apiLoginUser,
+  registerUser as apiRegisterUser,
+  requestPasswordReset as apiRequestReset,
+  resetUserPassword as apiResetPassword,
+  User 
+} from '../services/api';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -7,7 +16,11 @@ interface AuthContextType {
   loading: boolean;
   error: string | null;
   isAuthenticated: boolean;
-  login: (userId?: string) => Promise<void>;
+  loginWithEmail: (email: string, password?: string, rememberMe?: boolean) => Promise<void>;
+  loginWithDemo: (userId: string) => Promise<void>;
+  register: (payload: { name: string; email: string; phone?: string; role?: string }) => Promise<void>;
+  forgotPassword: (email: string) => Promise<{ message: string; resetToken?: string }>;
+  resetPassword: (payload: { email: string; newPassword: string; token?: string }) => Promise<{ message: string }>;
   logout: () => void;
   switchUser: (userId: string) => Promise<void>;
   refreshUser: () => Promise<void>;
@@ -23,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   
   // Track authenticated session state
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return localStorage.getItem('hopin_authenticated') === 'true';
+    return localStorage.getItem('hopin_auth_token') === 'active';
   });
 
   const loadData = async () => {
@@ -47,24 +60,69 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loadData();
   }, []);
 
-  const login = async (userId?: string) => {
+  const loginWithEmail = async (email: string, password?: string, rememberMe = true) => {
     try {
       setLoading(true);
-      if (userId) {
-        const updatedUser = await apiSwitchDemo(userId);
-        setCurrentUser(updatedUser);
+      setError(null);
+      const res = await apiLoginUser(email, password);
+      setCurrentUser(res.user);
+      localStorage.setItem('hopin_auth_token', 'active');
+      if (rememberMe) {
+        localStorage.setItem('hopin_remembered_email', email);
+      } else {
+        localStorage.removeItem('hopin_remembered_email');
       }
-      localStorage.setItem('hopin_authenticated', 'true');
       setIsAuthenticated(true);
     } catch (err: any) {
       setError(err.message);
+      throw err;
     } finally {
       setLoading(false);
     }
   };
 
+  const loginWithDemo = async (userId: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const updatedUser = await apiSwitchDemo(userId);
+      setCurrentUser(updatedUser);
+      localStorage.setItem('hopin_auth_token', 'active');
+      setIsAuthenticated(true);
+    } catch (err: any) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const register = async (payload: { name: string; email: string; phone?: string; role?: string }) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await apiRegisterUser(payload);
+      setCurrentUser(res.user);
+      localStorage.setItem('hopin_auth_token', 'active');
+      setIsAuthenticated(true);
+    } catch (err: any) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const forgotPassword = async (email: string) => {
+    return await apiRequestReset(email);
+  };
+
+  const resetPassword = async (payload: { email: string; newPassword: string; token?: string }) => {
+    return await apiResetPassword(payload);
+  };
+
   const logout = () => {
-    localStorage.removeItem('hopin_authenticated');
+    localStorage.removeItem('hopin_auth_token');
     setIsAuthenticated(false);
   };
 
@@ -73,7 +131,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(true);
       const updatedUser = await apiSwitchDemo(userId);
       setCurrentUser(updatedUser);
-      localStorage.setItem('hopin_authenticated', 'true');
+      localStorage.setItem('hopin_auth_token', 'active');
       setIsAuthenticated(true);
     } catch (err: any) {
       setError(err.message);
@@ -86,7 +144,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const user = await getCurrentUser();
       setCurrentUser(user);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Failed to refresh user', err);
     }
   };
@@ -98,7 +156,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       loading, 
       error, 
       isAuthenticated,
-      login,
+      loginWithEmail,
+      loginWithDemo,
+      register,
+      forgotPassword,
+      resetPassword,
       logout,
       switchUser, 
       refreshUser 

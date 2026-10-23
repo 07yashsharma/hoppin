@@ -9,16 +9,8 @@ import { RouteMap } from '../components/RouteMap';
 import { StickyNote } from '../components/StickyNote';
 import { 
   ArrowRight, 
-  Clock, 
-  Calendar, 
-  MapPin, 
-  Users, 
   Sliders, 
-  VolumeX, 
-  Wind, 
-  Briefcase, 
-  CheckCircle2,
-  Sparkles
+  CheckCircle2 
 } from 'lucide-react';
 
 export const BookRide: React.FC = () => {
@@ -102,17 +94,17 @@ export const BookRide: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 bg-bg text-primary">
       
       {/* Title */}
-      <div className="border-b border-hopin-border pb-4">
-        <span className="font-mono text-[11px] uppercase tracking-widest text-hopin-muted font-bold block mb-1">
+      <div className="border-b border-border pb-4">
+        <span className="font-mono text-[11px] uppercase tracking-widest text-muted font-semibold block mb-1">
           [BOOKING ENGINE // DESPATCH REQUEST]
         </span>
-        <h1 className="font-display font-black text-3xl sm:text-4xl text-hopin-dark tracking-tight uppercase">
+        <h1 className="font-display font-bold text-3xl sm:text-4xl text-primary tracking-tight uppercase">
           Reserve Your Corridor Ride
         </h1>
-        <p className="font-sans text-xs sm:text-sm text-hopin-muted mt-1">
+        <p className="font-sans text-xs sm:text-sm text-secondary mt-1">
           Define your departure window. Our matching engine will seek verified co-passengers heading in the exact same direction.
         </p>
       </div>
@@ -121,69 +113,69 @@ export const BookRide: React.FC = () => {
         
         {/* Form Column (7 cols) */}
         <div className="lg:col-span-7">
-          <form onSubmit={handleSubmit} className="bg-white rounded-3xl border-2 border-hopin-dark p-6 sm:p-8 space-y-6 shadow-[4px_4px_0px_0px_#171916]">
+          <form onSubmit={handleSubmit} className="bg-card rounded-2xl border border-border p-6 sm:p-8 space-y-6 shadow-elevated">
             
             {/* Journey Scope */}
             <div>
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted block mb-2">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-muted block mb-2">
                 // 01 SELECT JOURNEY SCOPE
               </span>
               <div className="grid grid-cols-3 gap-2 font-mono text-xs">
                 <button
                   type="button"
                   onClick={() => setJourneyType('interstate')}
-                  className={`p-3 rounded-2xl border text-center transition-all ${
+                  className={`p-3 rounded-xl border text-center transition-all ${
                     journeyType === 'interstate'
-                      ? 'border-hopin-dark bg-hopin-dark text-hopin-lime font-bold shadow-sm'
-                      : 'border-hopin-border hover:bg-hopin-bg text-hopin-dark'
+                      ? 'border-accent bg-elevated text-accent font-semibold shadow-subtle'
+                      : 'border-border bg-secondary hover:bg-elevated text-secondary'
                   }`}
                 >
-                  <p className="font-bold">Interstate</p>
-                  <p className="text-[10px] text-hopin-muted-light">Jaipur–Delhi</p>
+                  <p className="font-semibold text-primary">Interstate</p>
+                  <p className="text-[10px] text-muted">Jaipur–Delhi</p>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setJourneyType('outstation')}
-                  className={`p-3 rounded-2xl border text-center transition-all ${
+                  className={`p-3 rounded-xl border text-center transition-all ${
                     journeyType === 'outstation'
-                      ? 'border-hopin-dark bg-hopin-dark text-hopin-lime font-bold shadow-sm'
-                      : 'border-hopin-border hover:bg-hopin-bg text-hopin-dark'
+                      ? 'border-accent bg-elevated text-accent font-semibold shadow-subtle'
+                      : 'border-border bg-secondary hover:bg-elevated text-secondary'
                   }`}
                 >
-                  <p className="font-bold">Outstation</p>
-                  <p className="text-[10px] text-hopin-muted-light">Jaipur–Ajmer</p>
+                  <p className="font-semibold text-primary">Outstation</p>
+                  <p className="text-[10px] text-muted">Jaipur–Ajmer</p>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setJourneyType('city')}
-                  className={`p-3 rounded-2xl border text-center transition-all ${
+                  className={`p-3 rounded-xl border text-center transition-all ${
                     journeyType === 'city'
-                      ? 'border-hopin-dark bg-hopin-dark text-hopin-lime font-bold shadow-sm'
-                      : 'border-hopin-border hover:bg-hopin-bg text-hopin-dark'
+                      ? 'border-accent bg-elevated text-accent font-semibold shadow-subtle'
+                      : 'border-border bg-secondary hover:bg-elevated text-secondary'
                   }`}
                 >
-                  <p className="font-bold">City Transit</p>
-                  <p className="text-[10px] text-hopin-muted-light">Intra-Jaipur</p>
+                  <p className="font-semibold text-primary">City Transit</p>
+                  <p className="text-[10px] text-muted">Intra-Jaipur</p>
                 </button>
               </div>
             </div>
 
             {/* Endpoints */}
-            <div className="space-y-3 pt-2 border-t border-hopin-border">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted block">
+            <div className="space-y-3 pt-2 border-t border-border">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-muted block">
                 // 02 ROUTING ENDPOINTS
               </span>
 
               <div>
-                <label className="font-mono text-[11px] font-bold text-hopin-dark block mb-1">
+                <label className="font-mono text-[11px] font-semibold text-secondary block mb-1">
                   FROM (PICKUP POINT)
                 </label>
                 <select
                   value={pickupId}
                   onChange={(e) => setPickupId(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
+                  className="w-full px-3 py-2.5 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 >
                   {locations.map(loc => (
                     <option key={loc.id} value={loc.id}>{loc.name} — {loc.city} ({loc.category})</option>
@@ -192,13 +184,13 @@ export const BookRide: React.FC = () => {
               </div>
 
               <div>
-                <label className="font-mono text-[11px] font-bold text-hopin-dark block mb-1">
+                <label className="font-mono text-[11px] font-semibold text-secondary block mb-1">
                   TO (DESTINATION)
                 </label>
                 <select
                   value={dropoffId}
                   onChange={(e) => setDropoffId(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
+                  className="w-full px-3 py-2.5 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 >
                   {locations.map(loc => (
                     <option key={loc.id} value={loc.id}>{loc.name} — {loc.city} ({loc.category})</option>
@@ -208,33 +200,33 @@ export const BookRide: React.FC = () => {
             </div>
 
             {/* Date, Time & Seats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-hopin-border font-mono text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-border font-mono text-xs">
               <div>
-                <label className="block text-[10px] uppercase font-bold text-hopin-muted mb-1">DATE</label>
+                <label className="block text-[10px] uppercase font-semibold text-muted mb-1">DATE</label>
                 <input
                   type="date"
                   value={travelDate}
                   onChange={(e) => setTravelDate(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark"
+                  className="w-full px-2.5 py-2 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase font-bold text-hopin-muted mb-1">TIME</label>
+                <label className="block text-[10px] uppercase font-semibold text-muted mb-1">TIME</label>
                 <input
                   type="time"
                   value={departureTime}
                   onChange={(e) => setDepartureTime(e.target.value)}
-                  className="w-full px-2.5 py-2 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark"
+                  className="w-full px-2.5 py-2 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase font-bold text-hopin-muted mb-1">SEATS</label>
+                <label className="block text-[10px] uppercase font-semibold text-muted mb-1">SEATS</label>
                 <select
                   value={passengerCount}
                   onChange={(e) => setPassengerCount(Number(e.target.value))}
-                  className="w-full px-2.5 py-2 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark"
+                  className="w-full px-2.5 py-2 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 >
                   <option value={1}>1 Seat</option>
                   <option value={2}>2 Seats</option>
@@ -243,11 +235,11 @@ export const BookRide: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase font-bold text-hopin-muted mb-1">LUGGAGE</label>
+                <label className="block text-[10px] uppercase font-semibold text-muted mb-1">LUGGAGE</label>
                 <select
                   value={luggageCount}
                   onChange={(e) => setLuggageCount(Number(e.target.value))}
-                  className="w-full px-2.5 py-2 rounded-xl border border-hopin-border bg-hopin-bg font-sans text-xs font-semibold text-hopin-dark"
+                  className="w-full px-2.5 py-2 rounded-xl border border-border bg-secondary font-sans text-xs font-semibold text-primary focus:border-accent focus:outline-none"
                 >
                   <option value={1}>1 Bag</option>
                   <option value={2}>2 Bags</option>
@@ -257,53 +249,53 @@ export const BookRide: React.FC = () => {
             </div>
 
             {/* Cab Mode Selection */}
-            <div className="pt-2 border-t border-hopin-border">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted block mb-2">
+            <div className="pt-2 border-t border-border">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-muted block mb-2">
                 // 03 CAB ALLOCATION PREFERENCE
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div
                   onClick={() => setRideType('shared')}
-                  className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     rideType === 'shared'
-                      ? 'border-hopin-dark bg-hopin-dark text-white shadow-md'
-                      : 'border-hopin-border hover:border-hopin-dark'
+                      ? 'border-accent bg-elevated text-primary shadow-subtle'
+                      : 'border-border bg-secondary hover:border-accent/40'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-display font-bold text-sm">AI Shared Pool</span>
-                    <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded bg-hopin-lime text-hopin-dark">
+                    <span className="font-display font-semibold text-sm text-primary">AI Shared Pool</span>
+                    <span className="font-mono text-[9px] uppercase font-semibold px-2 py-0.5 rounded bg-accent/20 text-accent">
                       SAVE ~37%
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400 font-sans">
+                  <p className="text-[11px] text-secondary font-sans">
                     Matches with compatible verified travelers along your route. Minimal detour.
                   </p>
-                  <p className="font-mono text-base font-extrabold text-hopin-lime mt-2">
-                    ₹{sharedFare} <span className="text-[10px] font-normal text-slate-400">/ estimated seat</span>
+                  <p className="font-mono text-base font-bold text-accent mt-2">
+                    ₹{sharedFare} <span className="text-[10px] font-normal text-muted">/ estimated seat</span>
                   </p>
                 </div>
 
                 <div
                   onClick={() => setRideType('private')}
-                  className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border cursor-pointer transition-all ${
                     rideType === 'private'
-                      ? 'border-hopin-dark bg-hopin-dark text-white shadow-md'
-                      : 'border-hopin-border hover:border-hopin-dark'
+                      ? 'border-accent bg-elevated text-primary shadow-subtle'
+                      : 'border-border bg-secondary hover:border-accent/40'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-display font-bold text-sm">Private Solo Cab</span>
-                    <span className="font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded bg-black/10 text-slate-400">
+                    <span className="font-display font-semibold text-sm text-primary">Private Solo Cab</span>
+                    <span className="font-mono text-[9px] uppercase font-semibold px-2 py-0.5 rounded bg-secondary text-muted">
                       EXCLUSIVE
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400 font-sans">
+                  <p className="text-[11px] text-secondary font-sans">
                     Entire vehicle reserved exclusively for you. Point-to-point without stops.
                   </p>
-                  <p className="font-mono text-base font-extrabold text-white mt-2">
-                    ₹{soloFare} <span className="text-[10px] font-normal text-slate-400">/ estimated cab</span>
+                  <p className="font-mono text-base font-bold text-primary mt-2">
+                    ₹{soloFare} <span className="text-[10px] font-normal text-muted">/ estimated cab</span>
                   </p>
                 </div>
               </div>
@@ -311,13 +303,13 @@ export const BookRide: React.FC = () => {
 
             {/* Detour & Comfort Controls */}
             {rideType === 'shared' && (
-              <div className="bg-[#FAF9F5] p-5 rounded-2xl border border-hopin-border space-y-4 font-mono text-xs">
+              <div className="bg-secondary p-5 rounded-xl border border-border space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-hopin-dark flex items-center gap-1.5 uppercase">
-                    <Sliders className="w-3.5 h-3.5" />
+                  <span className="font-semibold text-primary flex items-center gap-1.5 uppercase">
+                    <Sliders className="w-3.5 h-3.5 text-accent" />
                     Maximum Allowable Detour
                   </span>
-                  <span className="font-bold text-hopin-dark bg-white px-2 py-0.5 rounded border border-hopin-border">
+                  <span className="font-semibold text-accent bg-card px-2 py-0.5 rounded border border-border">
                     +{maxDetourMinutes} MINS MAX
                   </span>
                 </div>
@@ -328,27 +320,27 @@ export const BookRide: React.FC = () => {
                   step={5}
                   value={maxDetourMinutes}
                   onChange={(e) => setMaxDetourMinutes(Number(e.target.value))}
-                  className="w-full accent-hopin-dark"
+                  className="w-full accent-accent"
                 />
 
-                <div className="pt-2 border-t border-hopin-border flex flex-wrap gap-4 text-xs font-sans">
+                <div className="pt-2 border-t border-border flex flex-wrap gap-4 text-xs font-sans">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={quietRide}
                       onChange={(e) => setQuietRide(e.target.checked)}
-                      className="rounded text-hopin-dark focus:ring-hopin-dark"
+                      className="rounded border-border text-accent focus:ring-accent"
                     />
-                    <span className="text-hopin-dark font-medium">Quiet Travel Mode</span>
+                    <span className="text-secondary font-medium">Quiet Travel Mode</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={acPreferred}
                       onChange={(e) => setAcPreferred(e.target.checked)}
-                      className="rounded text-hopin-dark focus:ring-hopin-dark"
+                      className="rounded border-border text-accent focus:ring-accent"
                     />
-                    <span className="text-hopin-dark font-medium">Full AC Cab Required</span>
+                    <span className="text-secondary font-medium">Full AC Cab Required</span>
                   </label>
                 </div>
               </div>
@@ -358,7 +350,7 @@ export const BookRide: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-2xl bg-hopin-lime hover:bg-hopin-lime-hover text-hopin-dark font-display font-black text-xs uppercase tracking-wider transition-all border border-black shadow-[3px_3px_0px_0px_#171916] active:translate-x-0.5 active:translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full py-4 rounded-xl bg-accent hover:bg-accent-hover text-bg font-display font-semibold text-xs uppercase tracking-wider transition-all shadow-subtle flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>PARSING CORRIDORS & SEARCHING CANDIDATES...</span>
@@ -371,8 +363,8 @@ export const BookRide: React.FC = () => {
             </button>
 
             {bookingSuccess && (
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-mono flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <div className="p-3 bg-success-surface border border-success/30 rounded-xl text-success text-xs font-mono flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>BOOKING REGISTERED. REDIRECTING TO MATCH POOL...</span>
               </div>
             )}
@@ -391,45 +383,45 @@ export const BookRide: React.FC = () => {
           />
 
           {/* Pricing Economics Card */}
-          <div className="bg-white rounded-3xl border-2 border-hopin-border p-6 space-y-4 font-mono text-xs shadow-sm">
-            <h3 className="font-display font-bold text-sm text-hopin-dark border-b border-hopin-border pb-3 uppercase tracking-tight">
+          <div className="bg-card rounded-2xl border border-border p-6 space-y-4 font-mono text-xs shadow-elevated">
+            <h3 className="font-display font-semibold text-sm text-primary border-b border-border pb-3 uppercase tracking-tight">
               [TRANSPARENT FARE RECONCILIATION]
             </h3>
 
-            <div className="space-y-2 text-hopin-muted">
+            <div className="space-y-2 text-secondary">
               <div className="flex justify-between">
                 <span>BASE FARE:</span>
-                <span className="text-hopin-dark font-bold">₹{baseFare}</span>
+                <span className="text-primary font-semibold">₹{baseFare}</span>
               </div>
               <div className="flex justify-between">
                 <span>DISTANCE ({estDistanceKm} KM × ₹{perKm}/KM):</span>
-                <span className="text-hopin-dark font-bold">₹{Math.round(estDistanceKm * perKm)}</span>
+                <span className="text-primary font-semibold">₹{Math.round(estDistanceKm * perKm)}</span>
               </div>
               <div className="flex justify-between">
                 <span>HIGHWAY MAINTENANCE & PLATFORM:</span>
-                <span className="text-hopin-dark font-bold">₹50</span>
+                <span className="text-primary font-semibold">₹50</span>
               </div>
               <div className="flex justify-between">
                 <span>APPLICABLE GST (5%):</span>
-                <span className="text-hopin-dark font-bold">₹{Math.round(soloFare * 0.05)}</span>
+                <span className="text-primary font-semibold">₹{Math.round(soloFare * 0.05)}</span>
               </div>
 
-              <div className="pt-2 border-t border-hopin-border flex justify-between font-bold text-hopin-dark text-sm">
+              <div className="pt-2 border-t border-border flex justify-between font-semibold text-primary text-sm">
                 <span>SOLO PRIVATE TOTAL:</span>
                 <span>₹{soloFare}</span>
               </div>
 
               {rideType === 'shared' && (
-                <div className="p-3.5 rounded-2xl bg-[#F4FBE4] border border-[#C5F55A] space-y-1 mt-2">
-                  <div className="flex justify-between text-hopin-dark font-bold">
+                <div className="p-3.5 rounded-xl bg-secondary border border-accent/30 space-y-1 mt-2">
+                  <div className="flex justify-between text-accent font-semibold">
                     <span>POOLING DISCOUNT (37%):</span>
                     <span>-₹{savingsAmount}</span>
                   </div>
-                  <div className="flex justify-between font-display font-black text-base text-hopin-dark pt-1">
+                  <div className="flex justify-between font-display font-bold text-base text-primary pt-1">
                     <span>CONFIRMED SHARED FARE:</span>
-                    <span>₹{sharedFare}</span>
+                    <span className="text-accent">₹{sharedFare}</span>
                   </div>
-                  <p className="text-[10px] text-hopin-muted font-sans pt-1">
+                  <p className="text-[10px] text-muted font-sans pt-1">
                     *85% credited to commercial captain upon arrival.
                   </p>
                 </div>
@@ -439,7 +431,7 @@ export const BookRide: React.FC = () => {
 
           {/* Sticky Note Advice */}
           <StickyNote
-            color="pink"
+            color="blue"
             badge="PRICE GUARANTEE"
             title="FAIR COST SHARING"
             rotation={1.5}

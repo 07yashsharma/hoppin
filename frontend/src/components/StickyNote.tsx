@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Pin, Sparkles, X, Check } from 'lucide-react';
+import { Pin } from 'lucide-react';
 
 export interface StickyNoteProps {
   color?: 'pink' | 'yellow' | 'orange' | 'mint' | 'blue';
   title?: string;
   badge?: string;
   children: React.ReactNode;
-  rotation?: number; // e.g. -2, 3, -1
+  rotation?: number;
   tape?: boolean;
   pin?: boolean;
   author?: string;
@@ -14,7 +14,7 @@ export interface StickyNoteProps {
 }
 
 export const StickyNote: React.FC<StickyNoteProps> = ({
-  color = 'yellow',
+  color = 'blue',
   title,
   badge,
   children,
@@ -25,95 +25,86 @@ export const StickyNote: React.FC<StickyNoteProps> = ({
   className = ''
 }) => {
   const [pinned, setPinned] = useState(true);
-  const [flipped, setFlipped] = useState(false);
 
-  // Palette schemes
-  const colorMap = {
+  // Subtle accent tint mappings for dark surfaces
+  const accentMap = {
     yellow: {
-      bg: 'bg-[#FEF6A8]',
-      border: 'border-[#E6D870]',
-      badgeBg: 'bg-[#F2DF55] text-[#6E5E00]',
-      pinColor: 'bg-amber-600',
-      text: 'text-[#4A4200]',
-      shadow: 'shadow-[5px_5px_0px_0px_rgba(74,66,0,0.15)]'
+      border: 'border-amber-500/30',
+      badge: 'bg-amber-500/15 text-amber-300',
+      pin: 'bg-amber-400',
+      tape: 'bg-amber-500/20'
     },
     pink: {
-      bg: 'bg-[#FFD9E8]',
-      border: 'border-[#F4ADC7]',
-      badgeBg: 'bg-[#FFADC9] text-[#7A123C]',
-      pinColor: 'bg-rose-500',
-      text: 'text-[#5E0B2E]',
-      shadow: 'shadow-[5px_5px_0px_0px_rgba(122,18,60,0.15)]'
+      border: 'border-pink-500/30',
+      badge: 'bg-pink-500/15 text-pink-300',
+      pin: 'bg-pink-400',
+      tape: 'bg-pink-500/20'
     },
     orange: {
-      bg: 'bg-[#FFE6D8]',
-      border: 'border-[#F8BCA1]',
-      badgeBg: 'bg-[#FFBC99] text-[#782800]',
-      pinColor: 'bg-orange-500',
-      text: 'text-[#632000]',
-      shadow: 'shadow-[5px_5px_0px_0px_rgba(120,40,0,0.15)]'
+      border: 'border-orange-500/30',
+      badge: 'bg-orange-500/15 text-orange-300',
+      pin: 'bg-orange-400',
+      tape: 'bg-orange-500/20'
     },
     mint: {
-      bg: 'bg-[#DAFAEB]',
-      border: 'border-[#A6E8C8]',
-      badgeBg: 'bg-[#98E7BF] text-[#005735]',
-      pinColor: 'bg-emerald-600',
-      text: 'text-[#004A2C]',
-      shadow: 'shadow-[5px_5px_0px_0px_rgba(0,87,53,0.15)]'
+      border: 'border-emerald-500/30',
+      badge: 'bg-emerald-500/15 text-emerald-300',
+      pin: 'bg-emerald-400',
+      tape: 'bg-emerald-500/20'
     },
     blue: {
-      bg: 'bg-[#DDEBFF]',
-      border: 'border-[#ABC8F7]',
-      badgeBg: 'bg-[#A8CAFF] text-[#0A3478]',
-      pinColor: 'bg-blue-600',
-      text: 'text-[#0A2E6E]',
-      shadow: 'shadow-[5px_5px_0px_0px_rgba(10,52,120,0.15)]'
+      border: 'border-accent/40',
+      badge: 'bg-accent/15 text-accent',
+      pin: 'bg-accent',
+      tape: 'bg-accent/20'
     }
   };
 
-  const c = colorMap[color];
+  const scheme = accentMap[color] || accentMap.blue;
 
   return (
     <div
       style={{ transform: `rotate(${rotation}deg)` }}
-      className={`relative p-5 rounded-sm border-2 ${c.border} ${c.bg} ${c.shadow} transition-all duration-300 hover:rotate-0 hover:scale-[1.02] hover:z-20 cursor-default select-none ${className}`}
+      className={`relative p-5 rounded-xl bg-card border ${scheme.border} shadow-subtle transition-all duration-300 hover:rotate-0 hover:scale-[1.01] hover:z-20 cursor-default select-none ${className}`}
     >
       {/* Scotch tape on top center */}
-      {tape && !pin && <div className="scotch-tape" />}
+      {tape && !pin && (
+        <div className={`absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-3 rounded-sm ${scheme.tape} backdrop-blur-sm border border-white/10`} />
+      )}
 
       {/* Push-pin on top center */}
       {pin && (
         <div 
           onClick={() => setPinned(!pinned)} 
-          className={`pushpin ${c.pinColor} cursor-pointer hover:scale-125 transition-transform`} 
+          className={`absolute -top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full ${scheme.pin} shadow-md cursor-pointer hover:scale-125 transition-transform border border-black/40`} 
           title="Toggle Pin"
         />
       )}
 
       {/* Header bar */}
-      <div className="flex items-start justify-between gap-2 pt-1 mb-2">
+      <div className="flex items-start justify-between gap-2 pt-1 mb-2.5">
         {badge && (
-          <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm ${c.badgeBg}`}>
+          <span className={`text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md ${scheme.badge}`}>
             {badge}
           </span>
         )}
         {title && (
-          <h4 className={`text-xs font-display font-black uppercase tracking-tight ${c.text}`}>
+          <h4 className="text-xs font-display font-semibold uppercase tracking-tight text-primary">
             {title}
           </h4>
         )}
       </div>
 
       {/* Note Content */}
-      <div className={`text-xs font-sans leading-relaxed ${c.text}`}>
+      <div className="text-xs font-sans leading-relaxed text-secondary">
         {children}
       </div>
 
       {/* Scribble author footer */}
       {author && (
-        <div className={`mt-3 pt-2 border-t border-black/10 flex items-center justify-between text-[10px] font-mono opacity-80 ${c.text}`}>
+        <div className="mt-3 pt-2 border-t border-border flex items-center justify-between text-[10px] font-mono text-muted">
           <span>— {author}</span>
-          <span>✓ verified</span>
+          <span className="text-emerald-400">✓ verified</span>
         </div>
       )}
     </div>

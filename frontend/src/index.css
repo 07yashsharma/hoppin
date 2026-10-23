@@ -3,116 +3,59 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-main: #101114;
+    --bg-secondary: #15171B;
+    --bg-card: #1B1E24;
+    --bg-elevated: #21242B;
+    --text-primary: #E8E9ED;
+    --text-secondary: #969AA5;
+    --color-accent: #8B8DFF;
+    --border-subtle: #292C33;
+  }
+
   body {
-    @apply bg-hopin-bg text-hopin-dark font-sans selection:bg-hopin-pink selection:text-white;
+    background-color: #101114;
+    color: #E8E9ED;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    selection-background-color: #8B8DFF;
+    selection-color: #101114;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-hopin-dark;
+    color: #E8E9ED;
+    letter-spacing: -0.02em;
+  }
+
+  /* Form control dark resets */
+  input, select, textarea {
+    background-color: #15171B;
+    color: #E8E9ED;
+    border-color: #292C33;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #969AA5;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #8B8DFF;
+    box-shadow: 0 0 0 1px #8B8DFF;
   }
 }
 
-/* 3D Perspective utilities */
-.perspective-container {
-  perspective: 1200px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* Custom terminal ticker / marquee */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Custom road dash animation for 3D car */
-@keyframes roadDash {
-  0% { background-position: 0 0; }
-  100% { background-position: -60px 0; }
-}
-
-.animated-road {
-  background-image: repeating-linear-gradient(
-    90deg,
-    #FFFFFF,
-    #FFFFFF 24px,
-    transparent 24px,
-    transparent 48px
-  );
-  animation: roadDash 0.8s linear infinite;
-}
-
-/* Sticky note scotch tape effect */
-.scotch-tape {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-1.5deg);
-  width: 90px;
-  height: 22px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  border-left: 2px dashed rgba(0,0,0,0.1);
-  border-right: 2px dashed rgba(0,0,0,0.1);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.scotch-tape-corner {
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  transform: rotate(35deg);
-  width: 55px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  border-left: 1px dashed rgba(0,0,0,0.1);
-  border-right: 1px dashed rgba(0,0,0,0.1);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Push-pin icon */
-.pushpin {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-/* Smooth page fade transition */
+/* Page fade transition */
 .page-transition {
-  animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: pageFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes pageFadeIn {
+@keyframes pageFade {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(4px);
   }
   to {
     opacity: 1;
@@ -120,25 +63,30 @@
   }
 }
 
-/* Custom scrollbars */
+/* Subtle dark scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF8F5;
+  background: #101114;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D6CD;
+  background: #292C33;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B6B4AA;
+  background: #383D47;
 }
 
-/* Leaflet container */
+/* Leaflet dark theme filter */
 .leaflet-container {
   width: 100%;
   height: 100%;
   border-radius: 0.75rem;
+  background-color: #15171B !important;
+}
+
+.leaflet-tile {
+  filter: brightness(0.65) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }

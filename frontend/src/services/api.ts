@@ -183,6 +183,51 @@ export async function switchDemoUser(userId: string): Promise<User> {
   return data.user;
 }
 
+export async function loginUser(email: string, password?: string): Promise<{ user: User; message: string }> {
+  const res = await fetch(`${API_BASE}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Authentication failed');
+  return data;
+}
+
+export async function registerUser(payload: { name: string; email: string; phone?: string; role?: string }): Promise<{ user: User; message: string }> {
+  const res = await fetch(`${API_BASE}/auth/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Registration failed');
+  return data;
+}
+
+export async function requestPasswordReset(email: string): Promise<{ message: string; resetToken?: string }> {
+  const res = await fetch(`${API_BASE}/auth/forgot-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Password reset request failed');
+  return data;
+}
+
+export async function resetUserPassword(payload: { email: string; newPassword: string; token?: string }): Promise<{ message: string }> {
+  const res = await fetch(`${API_BASE}/auth/reset-password`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.message || 'Password reset failed');
+  return data;
+}
+
+
 export async function createRideBooking(payload: any): Promise<{ ride: Ride; match?: RouteMatch }> {
   const res = await fetch(`${API_BASE}/rides`, {
     method: 'POST',
