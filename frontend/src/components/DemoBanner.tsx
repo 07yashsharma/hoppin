@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { resetDatabaseDemo } from '../services/api';
-import { RefreshCw, Check, Terminal, User, Shield, Car } from 'lucide-react';
+import { RefreshCw, Check, Terminal, User, Shield, Car, Sparkles } from 'lucide-react';
 
 export const DemoBanner: React.FC = () => {
   const { currentUser, switchUser, refreshUser } = useAuth();
@@ -23,68 +23,68 @@ export const DemoBanner: React.FC = () => {
   };
 
   return (
-    <div className="bg-hopin-dark text-[#D8D6CD] text-[11px] font-mono py-1.5 px-4 border-b border-[#2C3029]">
+    <div className="bg-hopin-dark text-white text-[11px] font-mono py-1.5 px-4 border-b-2 border-hopin-dark select-none">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         
-        {/* Terminal Indicator */}
+        {/* Terminal Indicator with vibrant pulse */}
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-hopin-lime animate-pulse" />
-          <span className="text-white font-bold tracking-tight">HOPIN // EVALUATOR RUNTIME:</span>
-          <span className="text-hopin-muted-light hidden md:inline">
-            Deterministic AI Route Matching & Verified Sharing Across India
+          <span className="w-2 h-2 rounded-full bg-hopin-pink animate-pulse" />
+          <span className="text-white font-bold tracking-tight">HOPIN // HIGHWAY RUNTIME:</span>
+          <span className="text-zinc-400 hidden md:inline">
+            Deterministic AI Corridor Pooling across Rajasthan & Delhi NCR
           </span>
         </div>
 
-        {/* Persona Switchers */}
+        {/* Persona Switchers with Eye-pleasing Colors */}
         <div className="flex items-center flex-wrap gap-1.5">
-          <span className="text-hopin-muted text-[10px] uppercase mr-1 hidden sm:inline">ACTOR:</span>
+          <span className="text-zinc-400 text-[10px] uppercase mr-1 hidden sm:inline">SWITCH ACTOR:</span>
           
           <button
             onClick={() => switchUser('usr_rohan')}
-            className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_rohan'
-                ? 'bg-hopin-lime text-hopin-dark font-bold'
-                : 'bg-[#272B25] text-slate-300 hover:bg-[#323830]'
+                ? 'bg-hopin-blue text-white font-bold border-hopin-blue shadow-sm'
+                : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
             }`}
           >
-            <User className="w-2.5 h-2.5" />
-            Rohan (Pass.)
+            <User className="w-3 h-3 text-cyan-300" />
+            <span>Rohan (Pass.)</span>
           </button>
 
           <button
             onClick={() => switchUser('usr_priya')}
-            className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_priya'
-                ? 'bg-hopin-lime text-hopin-dark font-bold'
-                : 'bg-[#272B25] text-slate-300 hover:bg-[#323830]'
+                ? 'bg-hopin-pink text-white font-bold border-hopin-pink shadow-sm'
+                : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
             }`}
           >
-            <User className="w-2.5 h-2.5" />
-            Priya (Pass.)
+            <User className="w-3 h-3 text-pink-300" />
+            <span>Priya (Pass.)</span>
           </button>
 
           <button
             onClick={() => switchUser('drv_vikram')}
-            className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'drv_vikram'
-                ? 'bg-hopin-lime text-hopin-dark font-bold'
-                : 'bg-[#272B25] text-slate-300 hover:bg-[#323830]'
+                ? 'bg-emerald-500 text-black font-bold border-emerald-400 shadow-sm'
+                : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
             }`}
           >
-            <Car className="w-2.5 h-2.5" />
-            Vikram (Driver)
+            <Car className="w-3 h-3 text-emerald-300" />
+            <span>Vikram (Captain)</span>
           </button>
 
           <button
             onClick={() => switchUser('usr_admin')}
-            className={`px-2 py-0.5 rounded text-[10px] font-mono transition-all flex items-center gap-1 ${
+            className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-all flex items-center gap-1 border ${
               currentUser?.id === 'usr_admin'
-                ? 'bg-hopin-lime text-hopin-dark font-bold'
-                : 'bg-[#272B25] text-slate-300 hover:bg-[#323830]'
+                ? 'bg-hopin-orange text-white font-bold border-hopin-orange shadow-sm'
+                : 'bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700'
             }`}
           >
-            <Shield className="w-2.5 h-2.5" />
-            Admin
+            <Shield className="w-3 h-3 text-amber-300" />
+            <span>Admin (Ops)</span>
           </button>
 
           {/* Reset Demo button */}
@@ -92,17 +92,17 @@ export const DemoBanner: React.FC = () => {
             onClick={handleReset}
             disabled={resetting}
             title="Reset database to initial demo fixtures"
-            className="ml-2 px-2 py-0.5 rounded text-[10px] font-mono bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-all flex items-center gap-1 border border-rose-500/30"
+            className="ml-2 px-2.5 py-1 rounded-md text-[10px] font-mono bg-red-950/80 text-rose-300 hover:bg-red-900 transition-all flex items-center gap-1 border border-rose-500/40"
           >
             {resetSuccess ? (
               <>
-                <Check className="w-2.5 h-2.5 text-hopin-lime" />
-                <span className="text-hopin-lime">RESET COMPLETE</span>
+                <Check className="w-3 h-3 text-emerald-400" />
+                <span className="text-emerald-400 font-bold">RESET COMPLETE</span>
               </>
             ) : (
               <>
-                <RefreshCw className={`w-2.5 h-2.5 ${resetting ? 'animate-spin' : ''}`} />
-                <span>{resetting ? 'RESETTING...' : '[RESET DB]'}</span>
+                <RefreshCw className={`w-3 h-3 ${resetting ? 'animate-spin' : ''}`} />
+                <span>{resetting ? 'RESETTING...' : 'RESET FIXTURES'}</span>
               </>
             )}
           </button>

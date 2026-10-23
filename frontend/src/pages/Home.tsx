@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { fetchLocations, LocationItem } from '../services/api';
+import { Moving3DCarHighway } from '../components/Moving3DCarHighway';
 import { Interactive3DHeroObject } from '../components/Interactive3DHeroObject';
 import { LiveMatchVisualizer } from '../components/LiveMatchVisualizer';
+import { StickyNote } from '../components/StickyNote';
 import { 
   ArrowRight, 
   MapPin, 
@@ -16,7 +18,9 @@ import {
   Leaf, 
   CheckCircle2,
   Star,
-  Compass
+  Compass,
+  Zap,
+  Heart
 } from 'lucide-react';
 
 export const Home: React.FC = () => {
@@ -41,54 +45,62 @@ export const Home: React.FC = () => {
   };
 
   return (
-    <div className="space-y-20 pb-20 overflow-hidden bg-hopin-bg">
+    <div className="space-y-16 pb-20 overflow-hidden bg-hopin-bg page-transition">
       
-      {/* SECTION 1: EDITORIAL HERO */}
-      <section className="pt-8 sm:pt-14 pb-12 border-b border-hopin-border relative">
+      {/* SECTION 1: PLAYFUL & EDITORIAL HERO */}
+      <section className="pt-8 sm:pt-12 pb-10 border-b-2 border-hopin-dark relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Top Editorial Label Tags */}
-          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] text-hopin-muted pb-6 border-b border-hopin-border mb-8 uppercase tracking-widest">
+          {/* Top Label Ticker */}
+          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-hopin-muted pb-4 border-b-2 border-hopin-dark mb-8 uppercase tracking-wider">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-hopin-lime" />
+              <span className="w-2.5 h-2.5 rounded-full bg-hopin-pink animate-ping" />
               <span className="font-bold text-hopin-dark">URBAN MOBILITY / 01</span>
               <span>// CORRIDOR POOLING ARCHITECTURE</span>
             </div>
             <div className="hidden sm:flex items-center gap-4">
-              <span>BUILT FOR SHARED JOURNEYS</span>
+              <span className="text-hopin-blue font-bold">NH-48 HIGHWAY ACTIVE</span>
               <span>•</span>
-              <span className="text-hopin-dark font-bold">STATE OF RAJASTHAN & DELHI NCR</span>
+              <span className="text-hopin-pink font-bold">JAIPUR ⇄ DELHI ⇄ AJMER</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            {/* Left Column: Oversized Typography & Booking Interface (7 cols) */}
-            <div className="lg:col-span-7 space-y-8">
+            {/* Left Column: Headline, Sticky Note, and Booking Panel (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
               
-              <div className="space-y-4">
+              <div className="space-y-3 relative">
+                {/* Floating playful sticky pill */}
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hopin-pink-light border-2 border-hopin-dark text-hopin-pink font-mono text-xs font-bold shadow-[2px_2px_0px_0px_#121624]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>37% CHEAPER THAN SOLO CABS</span>
+                </div>
+
                 <h1 className="font-display font-black text-5xl sm:text-6xl md:text-7xl text-hopin-dark leading-[0.95] tracking-tighter uppercase">
                   GOOD ROUTES.<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-hopin-dark via-hopin-dark to-hopin-muted">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-hopin-pink via-hopin-blue to-hopin-orange">
                     BETTER COMPANY.
                   </span>
                 </h1>
 
-                <p className="font-sans text-base sm:text-lg text-hopin-muted max-w-xl leading-relaxed pt-2">
+                <p className="font-sans text-base sm:text-lg text-hopin-muted max-w-xl leading-relaxed pt-1">
                   City to city, street to street. Find people heading your way, share a cab, and make the journey cost less.
                 </p>
               </div>
 
               {/* CLEAN FUNCTIONAL BOOKING INTERFACE */}
-              <div className="bg-white rounded-3xl border-2 border-hopin-dark shadow-[4px_4px_0px_0px_#171916] p-6 sm:p-7 space-y-5">
+              <div className="bg-white rounded-2xl border-2 border-hopin-dark shadow-[6px_6px_0px_0px_#121624] p-6 sm:p-7 space-y-5 relative">
                 
-                {/* Journey Scope Switcher */}
-                <div className="flex items-center gap-2 font-mono text-[11px]">
+                {/* Journey Scope Switcher with Cool Colors */}
+                <div className="flex items-center gap-2 font-mono text-xs">
                   <button
                     type="button"
                     onClick={() => setJourneyType('interstate')}
-                    className={`px-3 py-1 rounded-lg uppercase tracking-wider font-bold transition-colors ${
-                      journeyType === 'interstate' ? 'bg-hopin-dark text-hopin-lime' : 'bg-hopin-bg text-hopin-muted hover:text-hopin-dark'
+                    className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-bold transition-all border-2 border-hopin-dark ${
+                      journeyType === 'interstate' 
+                        ? 'bg-hopin-blue text-white shadow-[2px_2px_0px_0px_#121624]' 
+                        : 'bg-white text-hopin-dark hover:bg-hopin-bg'
                     }`}
                   >
                     Interstate (Delhi)
@@ -96,8 +108,10 @@ export const Home: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setJourneyType('outstation')}
-                    className={`px-3 py-1 rounded-lg uppercase tracking-wider font-bold transition-colors ${
-                      journeyType === 'outstation' ? 'bg-hopin-dark text-hopin-lime' : 'bg-hopin-bg text-hopin-muted hover:text-hopin-dark'
+                    className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-bold transition-all border-2 border-hopin-dark ${
+                      journeyType === 'outstation' 
+                        ? 'bg-hopin-orange text-white shadow-[2px_2px_0px_0px_#121624]' 
+                        : 'bg-white text-hopin-dark hover:bg-hopin-bg'
                     }`}
                   >
                     Outstation (Ajmer)
@@ -105,8 +119,10 @@ export const Home: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setJourneyType('city')}
-                    className={`px-3 py-1 rounded-lg uppercase tracking-wider font-bold transition-colors ${
-                      journeyType === 'city' ? 'bg-hopin-dark text-hopin-lime' : 'bg-hopin-bg text-hopin-muted hover:text-hopin-dark'
+                    className={`px-3.5 py-1.5 rounded-lg uppercase tracking-wider font-bold transition-all border-2 border-hopin-dark ${
+                      journeyType === 'city' 
+                        ? 'bg-hopin-pink text-white shadow-[2px_2px_0px_0px_#121624]' 
+                        : 'bg-white text-hopin-dark hover:bg-hopin-bg'
                     }`}
                   >
                     City (Jaipur)
@@ -116,18 +132,18 @@ export const Home: React.FC = () => {
                 <form onSubmit={handleSearchSubmit} className="space-y-4">
                   
                   {/* FROM / TO GRID */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     
                     {/* FROM */}
                     <div className="space-y-1">
-                      <label className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-hopin-lime" />
-                        FROM
+                      <label className="font-mono text-xs font-bold uppercase tracking-wider text-hopin-dark flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-hopin-pink" />
+                        <span>FROM (PICKUP POINT)</span>
                       </label>
                       <select
                         value={pickupId}
                         onChange={(e) => setPickupId(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
+                        className="w-full px-3 py-2.5 rounded-lg border-2 border-hopin-dark bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:ring-2 focus:ring-hopin-pink"
                       >
                         {locations.map(loc => (
                           <option key={loc.id} value={loc.id}>{loc.name} ({loc.city})</option>
@@ -137,14 +153,14 @@ export const Home: React.FC = () => {
 
                     {/* TO */}
                     <div className="space-y-1">
-                      <label className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-hopin-cobalt" />
-                        TO
+                      <label className="font-mono text-xs font-bold uppercase tracking-wider text-hopin-dark flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-hopin-blue" />
+                        <span>TO (DESTINATION)</span>
                       </label>
                       <select
                         value={dropoffId}
                         onChange={(e) => setDropoffId(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
+                        className="w-full px-3 py-2.5 rounded-lg border-2 border-hopin-dark bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:ring-2 focus:ring-hopin-blue"
                       >
                         {locations.map(loc => (
                           <option key={loc.id} value={loc.id}>{loc.name} ({loc.city})</option>
@@ -155,36 +171,36 @@ export const Home: React.FC = () => {
                   </div>
 
                   {/* WHEN / PASSENGERS / FIND A RIDE ROW */}
-                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-3.5 items-end">
                     
                     {/* WHEN */}
                     <div className="sm:col-span-4 space-y-1">
-                      <label className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted">
-                        WHEN
+                      <label className="font-mono text-xs font-bold uppercase tracking-wider text-hopin-dark flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5 text-hopin-orange" />
+                        <span>WHEN</span>
                       </label>
-                      <div className="flex gap-1.5">
-                        <input
-                          type="date"
-                          value={travelDate}
-                          onChange={(e) => setTravelDate(e.target.value)}
-                          className="w-full px-2.5 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
-                        />
-                      </div>
+                      <input
+                        type="date"
+                        value={travelDate}
+                        onChange={(e) => setTravelDate(e.target.value)}
+                        className="w-full px-3 py-2.5 rounded-lg border-2 border-hopin-dark bg-hopin-bg text-xs font-mono font-bold text-hopin-dark focus:bg-white focus:outline-none"
+                      />
                     </div>
 
                     {/* PASSENGERS */}
                     <div className="sm:col-span-3 space-y-1">
-                      <label className="font-mono text-[10px] font-bold uppercase tracking-wider text-hopin-muted">
-                        PASSENGERS
+                      <label className="font-mono text-xs font-bold uppercase tracking-wider text-hopin-dark flex items-center gap-1">
+                        <Users className="w-3.5 h-3.5 text-hopin-pink" />
+                        <span>SEATS</span>
                       </label>
                       <select
                         value={passengerCount}
                         onChange={(e) => setPassengerCount(Number(e.target.value))}
-                        className="w-full px-2.5 py-2.5 rounded-xl border border-hopin-border bg-hopin-bg text-xs font-semibold text-hopin-dark focus:bg-white focus:outline-none focus:border-hopin-dark"
+                        className="w-full px-3 py-2.5 rounded-lg border-2 border-hopin-dark bg-hopin-bg text-xs font-mono font-bold text-hopin-dark focus:bg-white focus:outline-none"
                       >
-                        <option value={1}>1 Person</option>
-                        <option value={2}>2 People</option>
-                        <option value={3}>3 People</option>
+                        <option value={1}>1 Seat</option>
+                        <option value={2}>2 Seats</option>
+                        <option value={3}>3 Seats</option>
                       </select>
                     </div>
 
@@ -192,7 +208,7 @@ export const Home: React.FC = () => {
                     <div className="sm:col-span-5">
                       <button
                         type="submit"
-                        className="w-full py-3 px-5 rounded-xl bg-hopin-lime hover:bg-hopin-lime-hover text-hopin-dark font-display font-black text-xs uppercase tracking-wider transition-all border border-black shadow-[2px_2px_0px_0px_#171916] active:translate-x-0.5 active:translate-y-0.5 flex items-center justify-center gap-2"
+                        className="w-full py-3 px-5 rounded-lg bg-hopin-dark text-hopin-lime hover:bg-black font-mono font-bold text-xs uppercase tracking-wider transition-all border-2 border-hopin-dark shadow-[4px_4px_0px_0px_#00E599] flex items-center justify-center gap-2 active:translate-x-0.5 active:translate-y-0.5"
                       >
                         <span>FIND A RIDE</span>
                         <ArrowRight className="w-4 h-4" />
@@ -204,8 +220,8 @@ export const Home: React.FC = () => {
                 </form>
 
                 {/* Popular Route Presets */}
-                <div className="pt-2 border-t border-hopin-border flex items-center flex-wrap gap-2 font-mono text-[11px] text-hopin-muted">
-                  <span className="font-bold text-hopin-dark uppercase">CORRIDORS:</span>
+                <div className="pt-3 border-t-2 border-hopin-dark flex items-center flex-wrap gap-2 font-mono text-xs text-hopin-muted">
+                  <span className="font-bold text-hopin-dark uppercase">CORRIDOR PRESETS:</span>
                   <button
                     type="button"
                     onClick={() => {
@@ -213,7 +229,7 @@ export const Home: React.FC = () => {
                       setDropoffId('loc_del_igi_t3');
                       setJourneyType('interstate');
                     }}
-                    className="hover:text-hopin-dark hover:underline transition-colors"
+                    className="text-hopin-blue font-bold hover:underline"
                   >
                     JAIPUR → DELHI AIRPORT [37% OFF]
                   </button>
@@ -225,7 +241,7 @@ export const Home: React.FC = () => {
                       setDropoffId('loc_ajm_dargah');
                       setJourneyType('outstation');
                     }}
-                    className="hover:text-hopin-dark hover:underline transition-colors"
+                    className="text-hopin-orange font-bold hover:underline"
                   >
                     JAIPUR → AJMER SHARIF
                   </button>
@@ -235,9 +251,38 @@ export const Home: React.FC = () => {
 
             </div>
 
-            {/* Right Column: Interactive 3D Route Sculpture (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center pt-4 lg:pt-0">
-              <Interactive3DHeroObject />
+            {/* Right Column: Handcrafted Sticky Notes & Interactive 3D Route Sculpture (5 cols) */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              {/* Tilted Sticky Note 1: Pink */}
+              <StickyNote 
+                color="pink" 
+                badge="HIGHWAY TIP" 
+                title="SHARED SAVINGS" 
+                rotation={2}
+                pin={true}
+                author="Rohan (Jaipur Commuter)"
+              >
+                "Solo cab from Jaipur to Delhi Airport was ₹3,800. Matched with Priya through hopin: ₹2,400 each in a clean Innova Crysta!"
+              </StickyNote>
+
+              {/* Tilted Sticky Note 2: Yellow */}
+              <StickyNote 
+                color="yellow" 
+                badge="SAFETY PROTOCOL" 
+                title="ZERO DETOUR MATH" 
+                rotation={-1.5}
+                tape={true}
+                author="Algorithm Dispatch"
+              >
+                "Strict 15-min detour ceiling. If heading bearings diverge by &gt; 45°, trips are discarded. Only pure highway matches."
+              </StickyNote>
+
+              {/* 3D Wireframe Sculpture */}
+              <div className="pt-2">
+                <Interactive3DHeroObject />
+              </div>
+
             </div>
 
           </div>
@@ -246,35 +291,51 @@ export const Home: React.FC = () => {
       </section>
 
       {/* TICKER MARQUEE TAPE */}
-      <div className="bg-hopin-dark text-[#D8D6CD] py-2.5 border-y border-[#2C3029] font-mono text-xs overflow-hidden">
+      <div className="bg-hopin-dark text-white py-2.5 border-y-2 border-hopin-dark font-mono text-xs overflow-hidden">
         <div className="animate-marquee whitespace-nowrap flex items-center gap-8">
-          <span className="text-hopin-lime font-bold">HOPIN // CORRIDOR ACTIVE</span>
+          <span className="text-hopin-pink font-bold">★ HOPIN HIGHWAY NETWORK</span>
           <span>JAIPUR JUNCTION ↔ DELHI IGI T3</span>
-          <span className="text-hopin-lime">★ 94.8% AVG MATCH COMPATIBILITY</span>
-          <span>100% VERIFIED PEER IDENTITIES</span>
-          <span className="text-hopin-orange font-bold">AVG SAVINGS: ₹1,430 PER RIDE</span>
-          <span>85% RECONCILED DRIVER PAYOUT</span>
-          <span className="text-hopin-lime font-bold">HOPIN // ZERO EMPTY SEATS</span>
-          <span>JAIPUR JUNCTION ↔ DELHI IGI T3</span>
-          <span className="text-hopin-lime">★ 94.8% AVG MATCH COMPATIBILITY</span>
-          <span>100% VERIFIED PEER IDENTITIES</span>
-          <span className="text-hopin-orange font-bold">AVG SAVINGS: ₹1,430 PER RIDE</span>
+          <span className="text-hopin-lime font-bold">94.8% AVG MATCH COMPATIBILITY</span>
+          <span>100% VERIFIED PEER PASSENGERS</span>
+          <span className="text-hopin-orange font-bold">AVG COMMUTER SAVINGS: ₹1,430 PER TRIP</span>
+          <span>85% GUARANTEED DRIVER PAYOUT</span>
+          <span className="text-hopin-blue font-bold">INNOVA CRYSTA FLEET</span>
         </div>
       </div>
 
-      {/* SECTION 2: AI ROUTE MATCHING VISUALIZATION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      {/* SECTION 2: 3D MOVING CAR HIGHWAY SIMULATOR */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-hopin-dark pb-4">
           <div>
-            <div className="font-mono text-[11px] text-hopin-muted uppercase tracking-widest flex items-center gap-2 mb-1.5">
-              <span className="w-2 h-2 rounded-full bg-hopin-lime" />
+            <div className="font-mono text-xs text-hopin-muted uppercase tracking-widest flex items-center gap-2 mb-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-hopin-blue" />
+              <span>INTERACTIVE TELEMETRY & STEERING</span>
+            </div>
+            <h2 className="font-display font-black text-3xl sm:text-4xl text-hopin-dark tracking-tight">
+              Live Highway Cab Simulator
+            </h2>
+          </div>
+          <p className="font-sans text-xs text-hopin-muted max-w-md">
+            Watch our simulated commercial cab cruise the NH-48 corridor. Move your cursor over the road to steer lanes, toggle neon underglow, or change cruising velocity!
+          </p>
+        </div>
+
+        <Moving3DCarHighway />
+      </section>
+
+      {/* SECTION 3: AI ROUTE MATCHING VISUALIZATION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+          <div>
+            <div className="font-mono text-xs text-hopin-muted uppercase tracking-widest flex items-center gap-2 mb-1">
+              <span className="w-2.5 h-2.5 rounded-full bg-hopin-lime" />
               <span>SPATIAL CONVERGENCE PROTOCOL</span>
             </div>
-            <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-hopin-dark tracking-tight">
+            <h2 className="font-display font-black text-3xl sm:text-4xl text-hopin-dark tracking-tight">
               Two Paths. One Shared Vehicle.
             </h2>
           </div>
-          <p className="font-sans text-xs sm:text-sm text-hopin-muted max-w-md">
+          <p className="font-sans text-xs text-hopin-muted max-w-md">
             Our algorithm merges real-time routes traveling along identical corridors into a single vehicle with explainable compatibility scores and zero wasted fuel.
           </p>
         </div>
@@ -282,151 +343,71 @@ export const Home: React.FC = () => {
         <LiveMatchVisualizer />
       </section>
 
-      {/* SECTION 3: EDITORIAL HOW IT WORKS (ASYMMETRIC) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* SECTION 4: TACTILE STICKY NOTES TESTIMONIALS & TRUST */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        <div className="border-b border-hopin-border pb-4 mb-8">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-hopin-muted font-bold block mb-1">
-            [MECHANICS // 03 STEPS]
-          </span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl text-hopin-dark tracking-tight uppercase">
-            How Shared Mobility Functions
-          </h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-hopin-dark pb-4">
+          <div>
+            <span className="font-mono text-xs text-hopin-pink uppercase tracking-widest block mb-1 font-bold">
+              [COMMUNITY EXPERIENCES // VERIFIED TRAVELERS]
+            </span>
+            <h2 className="font-display font-black text-3xl sm:text-4xl tracking-tight text-hopin-dark uppercase">
+              What Highway Commuters Say
+            </h2>
+          </div>
+          <span className="font-mono text-xs text-hopin-muted">// AUTHENTIC POST-TRIP REVIEWS</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
           
-          <div className="bg-white p-7 rounded-3xl border border-hopin-border shadow-sm flex flex-col justify-between space-y-6">
-            <span className="font-mono font-bold text-2xl text-hopin-dark">01 //</span>
-            <div>
-              <h3 className="font-display font-bold text-lg text-hopin-dark mb-2">Declare Your Schedule</h3>
-              <p className="font-sans text-xs text-hopin-muted leading-relaxed">
-                Choose your pickup point, destination, and acceptable detour limit (10 to 45 mins). Select shared pooling to enable co-passenger discovery.
-              </p>
-            </div>
-            <div className="font-mono text-[10px] text-hopin-muted uppercase tracking-wider pt-2 border-t border-hopin-border">
-              SCHEDULE TOLERANCE: ENFORCED
-            </div>
-          </div>
+          <StickyNote 
+            color="pink" 
+            badge="JAIPUR → GURUGRAM" 
+            title="WEEKLY COMMUTER" 
+            rotation={-2}
+            pin={true}
+            author="Rohan Sharma (Product Lead)"
+          >
+            "Weekly commute from Jaipur Junction to Cyber Hub used to cost ₹3,800. Matched with Priya through hopin, paid ₹2,320, and the cab was a clean Innova Crysta."
+          </StickyNote>
 
-          <div className="bg-white p-7 rounded-3xl border border-hopin-border shadow-sm flex flex-col justify-between space-y-6">
-            <span className="font-mono font-bold text-2xl text-hopin-cobalt">02 //</span>
-            <div>
-              <h3 className="font-display font-bold text-lg text-hopin-dark mb-2">Algorithmic Vector Alignment</h3>
-              <p className="font-sans text-xs text-hopin-muted leading-relaxed">
-                The engine evaluates highway heading bearing, detour math, vehicle capacity, and departure time delta. If $\cos(\Delta \theta) &lt; 0.45$, divergent trips are safely rejected.
-              </p>
-            </div>
-            <div className="font-mono text-[10px] text-hopin-muted uppercase tracking-wider pt-2 border-t border-hopin-border">
-              SPATIAL SIMILARITY: DETERMINISTIC
-            </div>
-          </div>
+          <StickyNote 
+            color="mint" 
+            badge="SAFETY REVIEW" 
+            title="VERIFIED TRUST" 
+            rotation={1.5}
+            tape={true}
+            author="Priya Patel (Management Consultant)"
+          >
+            "Verified Aadhaar badges and corporate email checks give me total peace of mind on the highway. Being able to inspect peer reviews beforehand makes all the difference."
+          </StickyNote>
 
-          <div className="bg-white p-7 rounded-3xl border border-hopin-border shadow-sm flex flex-col justify-between space-y-6">
-            <span className="font-mono font-bold text-2xl text-hopin-lime">03 //</span>
-            <div>
-              <h3 className="font-display font-bold text-lg text-hopin-dark mb-2">Mutual Confirmation & Dispatch</h3>
-              <p className="font-sans text-xs text-hopin-muted leading-relaxed">
-                Both travelers preview verified co-passenger reviews and approve the match. A commercial Innova Crysta is dispatched with instant 85% driver reconciliation.
-              </p>
-            </div>
-            <div className="font-mono text-[10px] text-hopin-muted uppercase tracking-wider pt-2 border-t border-hopin-border">
-              VEHICLE DISPATCH: MUTUAL CONSENT
-            </div>
-          </div>
+          <StickyNote 
+            color="orange" 
+            badge="OUTSTATION POOL" 
+            title="JAIPUR → AJMER" 
+            rotation={-1}
+            pin={true}
+            author="Dr. Sneha Kulkarni (Surgeon)"
+          >
+            "The detour was only 8 minutes to pick up another passenger visiting SMS Hospital in Jaipur. Smooth coordination and our shared fare was transparent down to the rupee."
+          </StickyNote>
 
         </div>
 
-      </section>
-
-      {/* SECTION 4: EDITORIAL TESTIMONIALS & TRUST */}
-      <section className="bg-hopin-dark text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#2C3029] pb-6">
-            <div>
-              <span className="font-mono text-xs text-hopin-lime uppercase tracking-widest block mb-1">
-                [COMMUNITY VOICES // VERIFIED DATA]
-              </span>
-              <h2 className="font-display font-black text-3xl sm:text-4xl tracking-tight text-white uppercase">
-                Commuters on the Golden Corridor
-              </h2>
-            </div>
-            <span className="font-mono text-xs text-hopin-muted">POST-TRIP REVIEWS EXCLUSIVELY</span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-            
-            <div className="p-6 rounded-3xl bg-[#1C201A] border border-[#2B3127] space-y-4">
-              <div className="flex items-center gap-1 text-hopin-lime">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-hopin-lime" />
-                ))}
-              </div>
-              <p className="font-sans text-xs text-[#D8D6CD] italic leading-relaxed">
-                "Weekly commute from Jaipur Junction to Cyber Hub Gurugram used to be a financial headache at ₹3,800. Matched with Priya through hopin, paid ₹2,320, and the cab was a clean Innova Crysta."
-              </p>
-              <div className="pt-3 border-t border-[#292F24] flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Rohan" className="w-8 h-8 rounded-lg object-cover" />
-                <div>
-                  <p className="font-bold text-white text-xs">Rohan Sharma</p>
-                  <p className="text-[10px] text-hopin-muted">PRODUCT DESIGNER • 38 RIDES</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-[#1C201A] border border-[#2B3127] space-y-4">
-              <div className="flex items-center gap-1 text-hopin-lime">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-hopin-lime" />
-                ))}
-              </div>
-              <p className="font-sans text-xs text-[#D8D6CD] italic leading-relaxed">
-                "Verified badges and identity checks give me total peace of mind on the highway. Being able to inspect peer reviews beforehand makes all the difference."
-              </p>
-              <div className="pt-3 border-t border-[#292F24] flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Priya" className="w-8 h-8 rounded-lg object-cover" />
-                <div>
-                  <p className="font-bold text-white text-xs">Priya Patel</p>
-                  <p className="text-[10px] text-hopin-muted">CONSULTANT • 26 RIDES</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-3xl bg-[#1C201A] border border-[#2B3127] space-y-4">
-              <div className="flex items-center gap-1 text-hopin-lime">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-hopin-lime" />
-                ))}
-              </div>
-              <p className="font-sans text-xs text-[#D8D6CD] italic leading-relaxed">
-                "The detour was only 8 minutes to pick up another passenger visiting SMS Hospital in Jaipur. Smooth coordination and our shared fare was transparent down to the rupee."
-              </p>
-              <div className="pt-3 border-t border-[#292F24] flex items-center gap-3">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100" alt="Sneha" className="w-8 h-8 rounded-lg object-cover" />
-                <div>
-                  <p className="font-bold text-white text-xs">Dr. Sneha Kulkarni</p>
-                  <p className="text-[10px] text-hopin-muted">HEALTHCARE SPECIALIST • 42 RIDES</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
       </section>
 
       {/* SECTION 5: FINAL ART-DIRECTED CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border-2 border-hopin-dark p-8 sm:p-14 shadow-[6px_6px_0px_0px_#171916] flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <div className="bg-hopin-dark text-white rounded-2xl border-2 border-hopin-dark p-8 sm:p-12 shadow-[6px_6px_0px_0px_#FF4D8D] flex flex-col md:flex-row md:items-center justify-between gap-8">
           <div className="space-y-2">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-hopin-muted font-bold block">
-              [COMMUTER ONBOARDING]
+            <span className="font-mono text-xs uppercase tracking-widest text-hopin-lime font-bold block">
+              // READY FOR YOUR NEXT JOURNEY?
             </span>
-            <h2 className="font-display font-black text-3xl sm:text-4xl text-hopin-dark tracking-tight uppercase">
-              Ready to Share Your Next Corridor?
+            <h2 className="font-display font-black text-3xl sm:text-4xl tracking-tight uppercase text-white">
+              Hop In and Start Saving Today.
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-hopin-muted max-w-lg">
+            <p className="font-sans text-xs sm:text-sm text-zinc-300 max-w-lg">
               Reserve an individual seat or private cab across Jaipur, Delhi, and Ajmer. 100% verified identities with zero hidden surcharges.
             </p>
           </div>
@@ -434,16 +415,16 @@ export const Home: React.FC = () => {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               to="/book"
-              className="px-6 py-3.5 rounded-xl bg-hopin-lime hover:bg-hopin-lime-hover text-hopin-dark font-display font-black text-xs uppercase tracking-wider transition-all border border-black shadow-[3px_3px_0px_0px_#171916] active:translate-x-0.5 active:translate-y-0.5 flex items-center gap-2"
+              className="px-6 py-3.5 rounded-lg bg-hopin-pink hover:bg-pink-600 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all border-2 border-hopin-dark shadow-[3px_3px_0px_0px_#FFFFFF] active:translate-x-0.5 active:translate-y-0.5 flex items-center gap-2"
             >
               <span>Book a Ride</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               to="/matches"
-              className="px-5 py-3.5 rounded-xl border border-hopin-border hover:border-hopin-dark text-hopin-dark font-mono text-xs font-bold transition-colors"
+              className="px-5 py-3.5 rounded-lg border-2 border-white/40 hover:border-white text-white font-mono text-xs font-bold uppercase tracking-wider transition-colors"
             >
-              // AI MATCHES
+              // AI Matches
             </Link>
           </div>
         </div>

@@ -6,6 +6,9 @@ interface AuthContextType {
   demoAccounts: User[];
   loading: boolean;
   error: string | null;
+  isAuthenticated: boolean;
+  login: (userId?: string) => Promise<void>;
+  logout: () => void;
   switchUser: (userId: string) => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -17,6 +20,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [demoAccounts, setDemoAccounts] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Track authenticated session state
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
+    return localStorage.getItem('hopin_authenticated') === 'true';
+  });
 
   const loadData = async () => {
     try {
@@ -39,11 +47,34 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     loadData();
   }, []);
 
+  const login = async (userId?: string) => {
+    try {
+      setLoading(true);
+      if (userId) {
+        const updatedUser = await apiSwitchDemo(userId);
+        setCurrentUser(updatedUser);
+      }
+      localStorage.setItem('hopin_authenticated', 'true');
+      setIsAuthenticated(true);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem('hopin_authenticated');
+    setIsAuthenticated(false);
+  };
+
   const switchUser = async (userId: string) => {
     try {
       setLoading(true);
       const updatedUser = await apiSwitchDemo(userId);
       setCurrentUser(updatedUser);
+      localStorage.setItem('hopin_authenticated', 'true');
+      setIsAuthenticated(true);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -61,7 +92,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ currentUser, demoAccounts, loading, error, switchUser, refreshUser }}>
+    <AuthContext.Provider value={{ 
+      currentUser, 
+      demoAccounts, 
+      loading, 
+      error, 
+      isAuthenticated,
+      login,
+      logout,
+      switchUser, 
+      refreshUser 
+    }}>
       {children}
     </AuthContext.Provider>
   );

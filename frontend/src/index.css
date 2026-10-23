@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-hopin-bg text-hopin-dark font-sans selection:bg-hopin-lime selection:text-hopin-dark;
+    @apply bg-hopin-bg text-hopin-dark font-sans selection:bg-hopin-pink selection:text-white;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -41,13 +41,92 @@
   animation-play-state: paused;
 }
 
+/* Custom road dash animation for 3D car */
+@keyframes roadDash {
+  0% { background-position: 0 0; }
+  100% { background-position: -60px 0; }
+}
+
+.animated-road {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #FFFFFF,
+    #FFFFFF 24px,
+    transparent 24px,
+    transparent 48px
+  );
+  animation: roadDash 0.8s linear infinite;
+}
+
+/* Sticky note scotch tape effect */
+.scotch-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 90px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-left: 2px dashed rgba(0,0,0,0.1);
+  border-right: 2px dashed rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scotch-tape-corner {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  transform: rotate(35deg);
+  width: 55px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  border-left: 1px dashed rgba(0,0,0,0.1);
+  border-right: 1px dashed rgba(0,0,0,0.1);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Push-pin icon */
+.pushpin {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Smooth page fade transition */
+.page-transition {
+  animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F3EB;
+  background: #FAF8F5;
 }
 ::-webkit-scrollbar-thumb {
   background: #D8D6CD;
@@ -61,5 +140,5 @@
 .leaflet-container {
   width: 100%;
   height: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
 }

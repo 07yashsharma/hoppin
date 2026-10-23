@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getRides, getAllMatches, Ride, RouteMatch } from '../services/api';
 import { useAuth } from '../context/AuthContext';
+import { StickyNote } from '../components/StickyNote';
 import { 
   Car, 
   Clock, 
@@ -249,6 +250,31 @@ export const UserDashboard: React.FC = () => {
           </p>
         </div>
       )}
+
+      {/* COMMUTER STICKY NOTES DISPATCH */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+        <StickyNote
+          color="pink"
+          badge="PASSENGER REPUTATION"
+          title="HIGHWAY ETIQUETTE"
+          rotation={-1.5}
+          pin={true}
+          author="Community Care"
+        >
+          "Keep up your 4.9★ reputation! Co-passengers appreciate your prompt curb arrival and quiet cabin travel during early morning legs."
+        </StickyNote>
+
+        <StickyNote
+          color="orange"
+          badge="CORRIDOR INSIGHT"
+          title="JAIPUR–DELHI EXPRESS"
+          rotation={2}
+          tape={true}
+          author="Highway Telemetry"
+        >
+          "Departing between 06:00 AM and 08:00 AM has an average 96% match rate with other tech & consulting professionals."
+        </StickyNote>
+      </div>
 
       {/* BOOKING HISTORY EDITORIAL TABLE */}
       <div className="bg-white rounded-xl border-2 border-hopin-dark shadow-[4px_4px_0px_0px_#171916] p-6 space-y-4">

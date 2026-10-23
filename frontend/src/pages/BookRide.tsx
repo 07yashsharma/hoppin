@@ -6,6 +6,7 @@ import {
   LocationItem 
 } from '../services/api';
 import { RouteMap } from '../components/RouteMap';
+import { StickyNote } from '../components/StickyNote';
 import { 
   ArrowRight, 
   Clock, 
@@ -435,6 +436,18 @@ export const BookRide: React.FC = () => {
               )}
             </div>
           </div>
+
+          {/* Sticky Note Advice */}
+          <StickyNote
+            color="pink"
+            badge="PRICE GUARANTEE"
+            title="FAIR COST SHARING"
+            rotation={1.5}
+            pin={true}
+            author="Pricing Telemetry"
+          >
+            "You save up to ₹1,430 on the Jaipur–Delhi corridor by sharing seats with verified passengers. If no compatible match is confirmed, your ride seamlessly defaults to private cab."
+          </StickyNote>
         </div>
 
       </div>

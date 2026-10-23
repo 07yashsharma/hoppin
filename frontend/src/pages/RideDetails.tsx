@@ -10,6 +10,7 @@ import {
 import { RouteMap } from '../components/RouteMap';
 import { CoPassengerCard } from '../components/CoPassengerCard';
 import { EmergencySOSModal } from '../components/EmergencySOSModal';
+import { StickyNote } from '../components/StickyNote';
 import { 
   Car, 
   Share2, 
@@ -362,6 +363,18 @@ export const RideDetails: React.FC = () => {
               </div>
             )}
           </div>
+
+          {/* Sticky Note Telemetry Memo */}
+          <StickyNote
+            color="mint"
+            badge="LIVE TELEMETRY"
+            title="GPS HIGHWAY TRACKING"
+            rotation={-1.5}
+            pin={true}
+            author="Regional Highway Desk"
+          >
+            "Your encrypted GPS telemetry is continuously synchronized with regional highway control. Click 'Share Live Ride' to let loved ones watch your cab's progress in real-time."
+          </StickyNote>
         </div>
 
       </div>
